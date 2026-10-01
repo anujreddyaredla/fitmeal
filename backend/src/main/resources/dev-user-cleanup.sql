@@ -1,0 +1,10 @@
+-- Development-only manual cleanup helper.
+-- This file is not executed automatically by Spring Boot.
+--
+-- Connect to the mealmate_db database, review the existing users first:
+-- SELECT id, first_name, last_name, email, role FROM users;
+--
+-- To remove all old development/test users, manually run:
+-- DELETE FROM users;
+--
+-- Register a fresh user through POST /api/auth/register after cleanup.

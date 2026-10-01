@@ -1,0 +1,24 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Java / Spring Boot
+**/target/
+
+# Node / Vite
+**/node_modules/
+**/dist/
+**/dist-ssr/
+
+# Editors
+.idea/
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
