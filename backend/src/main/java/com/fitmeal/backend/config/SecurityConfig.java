@@ -47,6 +47,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/auth/reset-password").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/hello").permitAll()
                         .requestMatchers("/api/meals/**").authenticated()
+                        .requestMatchers("/api/catalog/meals", "/api/catalog/meals/**").authenticated()
                         .requestMatchers("/api/ai/**").authenticated()
                         .requestMatchers("/api/grocery-list", "/api/grocery-list/**").authenticated()
                         .requestMatchers("/api/meal-plans", "/api/meal-plans/**").authenticated()

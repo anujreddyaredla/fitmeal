@@ -1,7 +1,9 @@
 package com.fitmeal.backend.controller;
 
+import com.fitmeal.backend.dto.CatalogMealPlanRequest;
 import com.fitmeal.backend.model.MealPlan;
 import com.fitmeal.backend.service.MealPlanService;
+import jakarta.validation.Valid;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -34,6 +36,14 @@ public class MealPlanController {
     @PostMapping
     public MealPlan addPlan(Authentication authentication, @RequestBody MealPlan plan) {
         return mealPlanService.addPlan(getUserEmail(authentication), plan);
+    }
+
+    @PostMapping("/catalog")
+    public MealPlan addCatalogMeal(
+            Authentication authentication,
+            @Valid @RequestBody CatalogMealPlanRequest request
+    ) {
+        return mealPlanService.addCatalogMeal(getUserEmail(authentication), request);
     }
 
     @PutMapping("/{id}")

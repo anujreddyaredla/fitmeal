@@ -1,16 +1,21 @@
 import { lazy, Suspense, useEffect, useRef, useState } from "react";
+import { Navigate, NavLink, Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import "./App.css";
 
-const ProgressSection = lazy(() => import("./components/ProgressSection"));
+import AuthPage from "./pages/AuthPage";
+import FitMealSectionLoader from "./components/FitMealSectionLoader";
 
-function FitMealSectionLoader({ label }) {
-    return (
-        <section className="fitmeal-section-loader">
-            <div className="fitmeal-loader-ring"></div>
-            <p>{label || "Loading FitMeal section..."}</p>
-        </section>
-    );
-}
+const DashboardPage = lazy(() => import("./pages/DashboardPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
+const MealsPage = lazy(() => import("./pages/MealsPage"));
+const PlannerPage = lazy(() => import("./pages/PlannerPage"));
+const AiPicksPage = lazy(() => import("./pages/AiPicksPage"));
+const AiPlannerPage = lazy(() => import("./pages/AiPlannerPage"));
+const AiCoachPage = lazy(() => import("./pages/AiCoachPage"));
+const FoodAnalyzerPage = lazy(() => import("./pages/FoodAnalyzerPage"));
+const GroceryPage = lazy(() => import("./pages/GroceryPage"));
+const MealLibraryPage = lazy(() => import("./pages/MealLibraryPage"));
+const MealDetailPage = lazy(() => import("./pages/MealDetailPage"));
 
 function getSavedUser() {
     try {
@@ -48,6 +53,8 @@ function getSavedCoachMessages() {
 }
 
 function App() {
+    const navigate = useNavigate();
+    const location = useLocation();
     const logoPath = "/images/fitmeal-logo.png";
     const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
     const savedUser = getSavedUser();
@@ -153,6 +160,10 @@ function App() {
     const [foodAnalyzerMessage, setFoodAnalyzerMessage] = useState("");
     const coachMessagesEndRef = useRef(null);
 
+    useEffect(() => {
+        window.scrollTo({ top: 0, behavior: "auto" });
+    }, [location.pathname]);
+
     const getAuthHeaders = () => {
         const token = authToken || localStorage.getItem("fitMealToken") || "";
 
@@ -184,6 +195,7 @@ function App() {
         setProfileMessage("");
         setAuthSuccess("");
         setAuthError(message);
+        navigate("/login", { replace: true });
     };
 
     const handleProtectedResponse = (response) => {
@@ -522,6 +534,7 @@ function App() {
                     setAuthToken(data.token);
                     setLoggedIn(true);
                     setAuthError("");
+                    navigate("/dashboard", { replace: true });
                     return;
                 }
 
@@ -1352,11 +1365,33 @@ function App() {
     };
 
     const scrollToSection = (sectionId) => {
-        const section = document.getElementById(sectionId);
+        const routeBySection = {
+            top: "/dashboard",
+            "dashboard-section": "/dashboard",
+            "progress-section": "/dashboard",
+            "profile-section": "/profile",
+            "meal-form-section": "/meals",
+            "planner-section": "/planner",
+            "ai-section": "/ai-picks",
+            "ai-weekly-section": "/ai-planner",
+            "ai-coach-section": "/ai-coach",
+            "food-analyzer-section": "/food-analyzer",
+            "grocery-section": "/grocery",
+        };
 
-        if (section) {
-            section.scrollIntoView({ behavior: "smooth" });
-        }
+        navigate(routeBySection[sectionId] || "/dashboard");
+
+        const scrollWhenReady = (attempt = 0) => {
+            const section = document.getElementById(sectionId);
+
+            if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+            } else if (attempt < 10) {
+                window.setTimeout(() => scrollWhenReady(attempt + 1), 50);
+            }
+        };
+
+        scrollWhenReady();
     };
 
     const filteredMeals = meals.filter((meal) =>
@@ -1543,1494 +1578,212 @@ function App() {
 
     const passwordInputType = passwordVisible ? "text" : "password";
 
+    const pageView = {
+        analyzeFoodImage,
+        authData,
+        authError,
+        authLoading,
+        authMode,
+        authSuccess,
+        bmi,
+        caloriesProgress,
+        caloriesRemaining,
+        cancelWeightEdit,
+        clearCoachChat,
+        clearGroceryForm,
+        clearMealPlanForm,
+        coachError,
+        coachInput,
+        coachLoading,
+        coachMessages,
+        coachMessagesEndRef,
+        coachQuickPrompts,
+        currentWeight,
+        dailyCalorieGoal,
+        dailyProteinGoal,
+        deleteGroceryItem,
+        deleteMeal,
+        deleteMealPlan,
+        deleteWeightEntry,
+        editGroceryItem,
+        editingGroceryId,
+        editingMealId,
+        editingMealPlanId,
+        editingWeightEntryId,
+        editMeal,
+        editMealPlan,
+        editWeightEntry,
+        filteredMeals,
+        foodAnalysis,
+        foodAnalyzerError,
+        foodAnalyzerLoading,
+        foodAnalyzerMessage,
+        foodImagePreview,
+        formData,
+        generatedWeeklyPlan,
+        generateRecommendations,
+        generateWeeklyPlan,
+        getAuthButtonText,
+        getGroceryItemsByCategory,
+        getPlanMealText,
+        goalCompletion,
+        groceryCategories,
+        groceryForm,
+        groceryProgress,
+        handleAuthChange,
+        handleAuthSubmit,
+        handleChange,
+        handleCoachKeyDown,
+        handleFoodDrop,
+        handleFoodImageInputChange,
+        handleGenderSelect,
+        handleGroceryChange,
+        handleGrocerySubmit,
+        handleMealPlanChange,
+        handleMealPlanSubmit,
+        handleMealTypeChange,
+        handleProfileChange,
+        handleProfileSubmit,
+        handleRecommendationChange,
+        handleSearchChange,
+        handleSubmit,
+        handleWeeklyPlannerChange,
+        handleWeightChange,
+        handleWeightSubmit,
+        hasNutritionTrendData,
+        logoPath,
+        mealPlanForm,
+        passwordInputType,
+        passwordVisible,
+        plannedMealsCount,
+        profileForm,
+        profileMessage,
+        proteinProgress,
+        proteinRemaining,
+        purchasedGroceryCount,
+        recentWeightEntries,
+        recommendationError,
+        recommendationForm,
+        recommendationLoading,
+        recommendations,
+        removeFoodImage,
+        saveFoodAnalysisAsMeal,
+        saveGeneratedWeeklyPlan,
+        scrollToSection,
+        searchTerm,
+        selectedMealType,
+        sendCoachMessage,
+        setCoachInput,
+        sevenDayAverageCalories,
+        sevenDayAverageCompletion,
+        sevenDayAverageProtein,
+        sevenDayNutritionData,
+        sortedMealPlans,
+        startingWeight,
+        switchAuthMode,
+        toggleGroceryPurchased,
+        togglePasswordVisibility,
+        totalCalories,
+        totalGroceryCount,
+        totalMeals,
+        totalProtein,
+        totalWeightChange,
+        waterGoal,
+        waterProgress,
+        weekDays,
+        weeklyAverageCalories,
+        weeklyAverageProtein,
+        weeklyPlannerError,
+        weeklyPlannerForm,
+        weeklyPlannerLoading,
+        weeklyPlannerMessage,
+        weeklyPlannerSaving,
+        weightError,
+        weightForm,
+        weightMessage,
+        weightTrendData,
+    };
+
+    if (!loggedIn) {
+        return (
+            <div className="app">
+                <AuthPage view={pageView} />
+            </div>
+        );
+    }
+
     return (
         <div className="app">
-            {loggedIn && (
-                <nav className="navbar">
-                <button
-                    className="brand-button brand-section"
-                    onClick={() => scrollToSection("top")}
-                >
+            <nav className="navbar">
+                <NavLink className="brand-button brand-section" to="/dashboard">
                     <img className="logo" src={logoPath} alt="FitMeal logo" />
                     <span>FitMeal</span>
-                </button>
+                </NavLink>
 
                 <div className="nav-links">
-                    <button onClick={() => scrollToSection("dashboard-section")}>
-                        Dashboard
-                    </button>
-                    <button onClick={() => scrollToSection("profile-section")}>
-                        Profile
-                    </button>
-                    <button onClick={() => scrollToSection("planner-section")}>
-                        Planner
-                    </button>
-                    <button onClick={() => scrollToSection("ai-section")}>
-                        AI Picks
-                    </button>
-                    <button onClick={() => scrollToSection("ai-weekly-section")}>
-                        AI Planner
-                    </button>
-                    <button onClick={() => scrollToSection("ai-coach-section")}>
-                        AI Coach
-                    </button>
-                    <button onClick={() => scrollToSection("food-analyzer-section")}>
-                        Food Analyzer
-                    </button>
-                    <button onClick={() => scrollToSection("grocery-section")}>
-                        Grocery List
-                    </button>
+                    <NavLink to="/dashboard">Dashboard</NavLink>
+                    <NavLink to="/profile">Profile</NavLink>
+                    <NavLink to="/meal-library">Meal Library</NavLink>
+                    <NavLink to="/meals">My Meals</NavLink>
+                    <NavLink to="/planner">Planner</NavLink>
+                    <NavLink to="/ai-picks">AI Picks</NavLink>
+                    <NavLink to="/ai-planner">AI Planner</NavLink>
+                    <NavLink to="/ai-coach">AI Coach</NavLink>
+                    <NavLink to="/food-analyzer">Food Analyzer</NavLink>
+                    <NavLink to="/grocery">Grocery List</NavLink>
                 </div>
 
                 <div className="auth-actions">
-                    {loggedIn && (
-                        <>
-                            <span className="profile-name">
-                                Hi, {currentUser?.firstName || "there"}
-                            </span>
-                            <button className="logout-button" onClick={() => logout()}>
-                                Logout
-                            </button>
-                        </>
-                    )}
+                    <span className="profile-name">
+                        Hi, {currentUser?.firstName || "there"}
+                    </span>
+                    <button className="logout-button" onClick={() => logout()}>
+                        Logout
+                    </button>
                 </div>
-                </nav>
-            )}
+            </nav>
 
-            {!loggedIn ? (
-                <main className="auth-page" id="top">
-                    <section className="auth-shell">
-                        <img className="auth-logo logo-large" src={logoPath} alt="FitMeal logo" />
-
-                        <div className="auth-card">
-                            <div className="auth-brand">
-                                <h1>FitMeal</h1>
-                                <p>Eat Healthy. Live Better.</p>
-                            </div>
-
-                            <div className="auth-tabs">
-                                <button
-                                    className={authMode === "login" ? "active" : ""}
-                                    onClick={() => switchAuthMode("login")}
-                                >
-                                    Login
-                                </button>
-                                <button
-                                    className={authMode === "register" ? "active" : ""}
-                                    onClick={() => switchAuthMode("register")}
-                                >
-                                    Register
-                                </button>
-                            </div>
-
-                            {(authMode === "verify" ||
-                                authMode === "forgot" ||
-                                authMode === "reset") && (
-                                <div className="auth-mode-heading">
-                                    <h2>
-                                        {authMode === "verify"
-                                            ? "Verify Email"
-                                            : authMode === "forgot"
-                                              ? "Forgot Password"
-                                              : "Reset Password"}
-                                    </h2>
-                                    <p>
-                                        {authMode === "verify"
-                                            ? "Paste the verification token from your backend console."
-                                            : authMode === "forgot"
-                                              ? "Enter your account email to request reset instructions."
-                                              : "Paste your reset token and choose a new password."}
-                                    </p>
-                                </div>
-                            )}
-
-                            <form className="auth-form" onSubmit={handleAuthSubmit}>
-                                {authMode === "login" && (
-                                    <label className="auth-field">
-                                        <input
-                                            type="text"
-                                            name="usernameOrPhone"
-                                            placeholder="Username or Phone"
-                                            value={authData.usernameOrPhone}
-                                            onChange={handleAuthChange}
-                                        />
-                                    </label>
-                                )}
-
-                                {authMode === "register" && (
-                                    <>
-                                        <label className="auth-field">
-                                            <input
-                                                type="text"
-                                                name="firstName"
-                                                placeholder="First Name"
-                                                value={authData.firstName}
-                                                onChange={handleAuthChange}
-                                            />
-                                        </label>
-
-                                        <label className="auth-field">
-                                            <input
-                                                type="text"
-                                                name="lastName"
-                                                placeholder="Last Name"
-                                                value={authData.lastName}
-                                                onChange={handleAuthChange}
-                                            />
-                                        </label>
-
-                                        <label className="auth-field">
-                                            <input
-                                                type="email"
-                                                name="email"
-                                                placeholder="Email"
-                                                value={authData.email}
-                                                onChange={handleAuthChange}
-                                            />
-                                        </label>
-                                    </>
-                                )}
-
-                                {authMode === "verify" && (
-                                    <label className="auth-field">
-                                        <input
-                                            type="text"
-                                            name="verificationToken"
-                                            placeholder="Verification token"
-                                            value={authData.verificationToken}
-                                            onChange={handleAuthChange}
-                                        />
-                                    </label>
-                                )}
-
-                                {authMode === "forgot" && (
-                                    <label className="auth-field">
-                                        <input
-                                            type="email"
-                                            name="email"
-                                            placeholder="Email"
-                                            value={authData.email}
-                                            onChange={handleAuthChange}
-                                        />
-                                    </label>
-                                )}
-
-                                {(authMode === "login" || authMode === "register") && (
-                                    <label className="auth-field">
-                                        <input
-                                            type={passwordInputType}
-                                            name="password"
-                                            placeholder="Password"
-                                            value={authData.password}
-                                            onChange={handleAuthChange}
-                                        />
-                                        <button
-                                            className="password-toggle"
-                                            type="button"
-                                            onMouseDown={(event) => event.preventDefault()}
-                                            onClick={togglePasswordVisibility}
-                                        >
-                                            {passwordVisible ? "hide" : "show"}
-                                        </button>
-                                    </label>
-                                )}
-
-                                {authMode === "register" && (
-                                    <label className="auth-field">
-                                        <input
-                                            type={passwordInputType}
-                                            name="confirmPassword"
-                                            placeholder="Confirm password"
-                                            value={authData.confirmPassword}
-                                            onChange={handleAuthChange}
-                                        />
-                                        <button
-                                            className="password-toggle"
-                                            type="button"
-                                            onMouseDown={(event) => event.preventDefault()}
-                                            onClick={togglePasswordVisibility}
-                                        >
-                                            {passwordVisible ? "hide" : "show"}
-                                        </button>
-                                    </label>
-                                )}
-
-                                {authMode === "reset" && (
-                                    <>
-                                        <label className="auth-field">
-                                            <input
-                                                type="text"
-                                                name="resetToken"
-                                                placeholder="Reset token"
-                                                value={authData.resetToken}
-                                                onChange={handleAuthChange}
-                                            />
-                                        </label>
-
-                                        <label className="auth-field">
-                                            <input
-                                                type={passwordInputType}
-                                                name="newPassword"
-                                                placeholder="New password"
-                                                value={authData.newPassword}
-                                                onChange={handleAuthChange}
-                                            />
-                                            <button
-                                                className="password-toggle"
-                                                type="button"
-                                                onMouseDown={(event) => event.preventDefault()}
-                                                onClick={togglePasswordVisibility}
-                                            >
-                                                {passwordVisible ? "hide" : "show"}
-                                            </button>
-                                        </label>
-
-                                        <label className="auth-field">
-                                            <input
-                                                type={passwordInputType}
-                                                name="confirmPassword"
-                                                placeholder="Confirm password"
-                                                value={authData.confirmPassword}
-                                                onChange={handleAuthChange}
-                                            />
-                                            <button
-                                                className="password-toggle"
-                                                type="button"
-                                                onMouseDown={(event) => event.preventDefault()}
-                                                onClick={togglePasswordVisibility}
-                                            >
-                                                {passwordVisible ? "hide" : "show"}
-                                            </button>
-                                        </label>
-                                    </>
-                                )}
-
-                                {authMode === "login" && (
-                                    <button
-                                        className="forgot-link"
-                                        type="button"
-                                        onClick={() => switchAuthMode("forgot")}
-                                    >
-                                        Forgot Password?
-                                    </button>
-                                )}
-
-                                {authMode === "forgot" && (
-                                    <button
-                                        className="forgot-link"
-                                        type="button"
-                                        onClick={() => switchAuthMode("reset")}
-                                    >
-                                        Already have a reset token?
-                                    </button>
-                                )}
-
-                                {authError && <p className="validation-message">{authError}</p>}
-                                {authSuccess && (
-                                    <p className="success-message">{authSuccess}</p>
-                                )}
-
-                                <button
-                                    className="auth-submit"
-                                    type="submit"
-                                    disabled={authLoading}
-                                >
-                                    {getAuthButtonText()}
-                                </button>
-                            </form>
-
-                            <p className="auth-switch-text">
-                                {authMode === "login" && "Don't have an account?"}
-                                {authMode === "register" && "Already have an account?"}
-                                {authMode === "verify" && "Already verified?"}
-                                {authMode === "forgot" && "Remember your password?"}
-                                {authMode === "reset" && "Back to sign in?"}
-                                <button
-                                    type="button"
-                                    onClick={() =>
-                                        switchAuthMode(authMode === "login" ? "register" : "login")
-                                    }
-                                >
-                                    {authMode === "login" ? "Register" : "Login"}
-                                </button>
-                            </p>
-                        </div>
-                    </section>
-                </main>
-            ) : (
-                <>
-                    <section className="hero" id="top">
-                        <div className="hero-content">
-                            <span className="hero-label">Premium nutrition workspace</span>
-                            <div className="hero-title-row brand-section">
-                                <img className="logo" src={logoPath} alt="FitMeal logo" />
-                                <h1>Smart Nutrition & Meal Planning</h1>
-                            </div>
-                            <p>
-                                Track meals, protein, calories, and healthy habits in one place.
-                            </p>
-
-                            <div className="hero-actions">
-                                <button onClick={() => scrollToSection("meal-form-section")}>
-                                    Add Meal
-                                </button>
-                                <button
-                                    className="secondary-button"
-                                    onClick={() => scrollToSection("ai-section")}
-                                >
-                                    AI Recommendations
-                                </button>
-                            </div>
-                        </div>
-
-                        <div className="hero-panel">
-                            <div className="hero-meal-card">
-                                <span>Today</span>
-                                <h2>Balanced chicken bowl</h2>
-                                <p>650 calories</p>
-                            </div>
-                            <div className="hero-stat-row">
-                                <div>
-                                    <strong>40g</strong>
-                                    <span>Protein</span>
-                                </div>
-                                <div>
-                                    <strong>3</strong>
-                                    <span>Meals planned</span>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <main className="main-content">
-                        <section className="dashboard analytics-dashboard" id="dashboard-section">
-                            <div className="dashboard-card analytics-hero-card">
-                                <span className="analytics-label">Today</span>
-                                <h3>Goal Completion</h3>
-                                <p>{goalCompletion}%</p>
-                                <div className="progress-track">
-                                    <div
-                                        className="progress-fill"
-                                        style={{ width: `${goalCompletion}%` }}
-                                    ></div>
-                                </div>
-                            </div>
-
-                            <div className="dashboard-card analytics-card">
-                                <h3>Calories Consumed</h3>
-                                <p>{totalCalories}</p>
-                                <span>{caloriesRemaining} remaining</span>
-                            </div>
-
-                            <div className="dashboard-card analytics-card">
-                                <h3>Protein Consumed</h3>
-                                <p>{totalProtein}g</p>
-                                <span>{proteinRemaining}g remaining</span>
-                            </div>
-
-                            <div className="dashboard-card analytics-card">
-                                <h3>Total Meals Today</h3>
-                                <p>{totalMeals}</p>
-                                <span>From current meal list</span>
-                            </div>
-
-                            <div className="dashboard-card progress-card">
-                                <div className="progress-card-top">
-                                    <h3>Calories Progress</h3>
-                                    <strong>{caloriesProgress}%</strong>
-                                </div>
-                                <div className="progress-track">
-                                    <div
-                                        className="progress-fill"
-                                        style={{ width: `${caloriesProgress}%` }}
-                                    ></div>
-                                </div>
-                                <span>{totalCalories} / {dailyCalorieGoal || 0} cal</span>
-                            </div>
-
-                            <div className="dashboard-card progress-card">
-                                <div className="progress-card-top">
-                                    <h3>Protein Progress</h3>
-                                    <strong>{proteinProgress}%</strong>
-                                </div>
-                                <div className="progress-track">
-                                    <div
-                                        className="progress-fill protein-fill"
-                                        style={{ width: `${proteinProgress}%` }}
-                                    ></div>
-                                </div>
-                                <span>{totalProtein} / {dailyProteinGoal || 0}g</span>
-                            </div>
-
-                            <div className="dashboard-card progress-card">
-                                <div className="progress-card-top">
-                                    <h3>Water Progress</h3>
-                                    <strong>{waterProgress}%</strong>
-                                </div>
-                                <div className="progress-track">
-                                    <div
-                                        className="progress-fill water-fill"
-                                        style={{ width: `${waterProgress}%` }}
-                                    ></div>
-                                </div>
-                                <span>Goal: {waterGoal || 0} ml</span>
-                            </div>
-
-                            <div className="dashboard-card weekly-summary-card">
-                                <h3>Weekly Summary</h3>
-                                <div className="weekly-summary-grid">
-                                    <div>
-                                        <strong>{weeklyAverageCalories}</strong>
-                                        <span>Avg calories</span>
-                                    </div>
-                                    <div>
-                                        <strong>{weeklyAverageProtein}g</strong>
-                                        <span>Avg protein</span>
-                                    </div>
-                                    <div>
-                                        <strong>{plannedMealsCount}</strong>
-                                        <span>Planned meals</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
-                        <Suspense fallback={<FitMealSectionLoader label="Loading Progress Analytics..." />}>
-                            <ProgressSection
-                                currentWeight={currentWeight}
-                                startingWeight={startingWeight}
-                                totalWeightChange={totalWeightChange}
-                                bmi={bmi}
-                                sevenDayAverageCalories={sevenDayAverageCalories}
-                                sevenDayAverageProtein={sevenDayAverageProtein}
-                                sevenDayAverageCompletion={sevenDayAverageCompletion}
-                                editingWeightEntryId={editingWeightEntryId}
-                                weightForm={weightForm}
-                                handleWeightSubmit={handleWeightSubmit}
-                                handleWeightChange={handleWeightChange}
-                                cancelWeightEdit={cancelWeightEdit}
-                                weightError={weightError}
-                                weightMessage={weightMessage}
-                                recentWeightEntries={recentWeightEntries}
-                                editWeightEntry={editWeightEntry}
-                                deleteWeightEntry={deleteWeightEntry}
-                                weightTrendData={weightTrendData}
-                                hasNutritionTrendData={hasNutritionTrendData}
-                                sevenDayNutritionData={sevenDayNutritionData}
+            <Suspense fallback={<FitMealSectionLoader label="Loading page..." />}>
+                <Routes>
+                    <Route path="/dashboard" element={<DashboardPage view={pageView} />} />
+                    <Route path="/profile" element={<ProfilePage view={pageView} />} />
+                    <Route
+                        path="/meal-library"
+                        element={<MealLibraryPage onSessionExpired={logout} />}
+                    />
+                    <Route
+                        path="/meal-library/:slug"
+                        element={
+                            <MealDetailPage
+                                onMealPlanUpdated={fetchMealPlans}
+                                onSessionExpired={logout}
                             />
-                        </Suspense>
-                        <section className="panel profile-section" id="profile-section">
-                            <div className="profile-top">
-                                <div className="section-heading">
-                                    <span>Your goals</span>
-                                    <h2>Profile Dashboard</h2>
-                                </div>
-
-                                {profileMessage && (
-                                    <p className="profile-message">{profileMessage}</p>
-                                )}
-                            </div>
-
-                            <div className="profile-card-grid">
-                                <div className="profile-goal-card">
-                                    <span>Daily Calories Goal</span>
-                                    <strong>{profileForm.dailyCalorieGoal || 0}</strong>
-                                </div>
-                                <div className="profile-goal-card">
-                                    <span>Daily Protein Goal</span>
-                                    <strong>{profileForm.dailyProteinGoal || 0}g</strong>
-                                </div>
-                                <div className="profile-goal-card">
-                                    <span>Water Goal</span>
-                                    <strong>{profileForm.waterGoal || 0} ml</strong>
-                                </div>
-                                <div className="profile-goal-card">
-                                    <span>Current Streak</span>
-                                    <strong>{profileForm.currentStreak || 0} days</strong>
-                                </div>
-                                <div className="profile-goal-card bmi-card">
-                                    <span>BMI</span>
-                                    <strong>{bmi}</strong>
-                                </div>
-                            </div>
-
-                            <form className="profile-form" onSubmit={handleProfileSubmit}>
-                                <input
-                                    type="number"
-                                    name="age"
-                                    placeholder="Age"
-                                    value={profileForm.age}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="height"
-                                    placeholder="Height (cm)"
-                                    value={profileForm.height}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="weight"
-                                    placeholder="Weight (kg)"
-                                    value={profileForm.weight}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <div className="gender-control" aria-label="Gender">
-                                    <button
-                                        type="button"
-                                        className={profileForm.gender === "Male" ? "active" : ""}
-                                        onClick={() => handleGenderSelect("Male")}
-                                    >
-                                        Male
-                                    </button>
-                                    <button
-                                        type="button"
-                                        className={profileForm.gender === "Female" ? "active" : ""}
-                                        onClick={() => handleGenderSelect("Female")}
-                                    >
-                                        Female
-                                    </button>
-                                </div>
-
-                                <select
-                                    name="fitnessGoal"
-                                    value={profileForm.fitnessGoal}
-                                    onChange={handleProfileChange}
-                                >
-                                    <option value="Weight Loss">Weight Loss</option>
-                                    <option value="Muscle Gain">Muscle Gain</option>
-                                    <option value="Maintenance">Maintenance</option>
-                                    <option value="High Protein">High Protein</option>
-                                </select>
-
-                                <p className="profile-helper">
-                                    Goals are estimated from your profile and can be adjusted
-                                    manually.
-                                </p>
-
-                                <input
-                                    type="number"
-                                    name="dailyCalorieGoal"
-                                    placeholder="Daily Calorie Goal"
-                                    value={profileForm.dailyCalorieGoal}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="dailyProteinGoal"
-                                    placeholder="Daily Protein Goal"
-                                    value={profileForm.dailyProteinGoal}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="waterGoal"
-                                    placeholder="Water Goal (ml)"
-                                    value={profileForm.waterGoal}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="currentStreak"
-                                    placeholder="Current Streak"
-                                    value={profileForm.currentStreak}
-                                    onChange={handleProfileChange}
-                                />
-
-                                <button type="submit">Save Profile</button>
-                            </form>
-                        </section>
-
-                        <section className="ai-section" id="ai-section">
-                            <div className="ai-copy">
-                                <span>AI-powered planning</span>
-                                <h2>AI Meal Recommendations</h2>
-                                <p>
-                                    Choose your goal and nutrition targets to generate meal ideas
-                                    from the FitMeal backend.
-                                </p>
-                            </div>
-
-                            <div className="ai-controls">
-                                <select
-                                    name="goal"
-                                    value={recommendationForm.goal}
-                                    onChange={handleRecommendationChange}
-                                >
-                                    <option value="Weight Loss">Weight Loss</option>
-                                    <option value="Muscle Gain">Muscle Gain</option>
-                                    <option value="Maintenance">Maintenance</option>
-                                    <option value="High Protein">High Protein</option>
-                                </select>
-
-                                <input
-                                    type="number"
-                                    name="calories"
-                                    placeholder="Calories target"
-                                    value={recommendationForm.calories}
-                                    onChange={handleRecommendationChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="proteinTarget"
-                                    placeholder="Protein target"
-                                    value={recommendationForm.proteinTarget}
-                                    onChange={handleRecommendationChange}
-                                />
-
-                                <button
-                                    className={recommendationLoading ? "loading-button" : ""}
-                                    onClick={generateRecommendations}
-                                    disabled={recommendationLoading}
-                                >
-                                    {recommendationLoading
-                                        ? "Generating..."
-                                        : "Generate Recommendations"}
-                                </button>
-                            </div>
-
-                            {recommendationError && (
-                                <p className="recommendation-error">{recommendationError}</p>
-                            )}
-
-                            <div className="recommendation-grid">
-                                {recommendations.map((meal) => (
-                                    <div
-                                        className="recommendation-card"
-                                        key={meal.id || meal.name}
-                                    >
-                                        <div>
-                                            <span className="ai-badge">AI Pick</span>
-                                            <h3>{meal.name}</h3>
-                                        </div>
-
-                                        <div className="recommendation-metrics">
-                                            <p>
-                                                <strong>{meal.calories}</strong>
-                                                Calories
-                                            </p>
-                                            <p>
-                                                <strong>{meal.protein}g</strong>
-                                                Protein
-                                            </p>
-                                        </div>
-
-                                        <div className="tag-row">
-                                            {(meal.tags || []).map((tag) => (
-                                                <span key={tag}>{tag}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-
-                        <section className="ai-weekly-section" id="ai-weekly-section">
-                            <div className="ai-weekly-header">
-                                <div>
-                                    <span>AI weekly planner</span>
-                                    <h2>Generate a 7-Day Meal Plan</h2>
-                                    <p>
-                                        Use your nutrition targets and dietary preference to build a
-                                        Monday to Sunday plan from the FitMeal AI recommendations API.
-                                    </p>
-                                </div>
-
-                                <button
-                                    type="button"
-                                    onClick={saveGeneratedWeeklyPlan}
-                                    disabled={weeklyPlannerSaving || !generatedWeeklyPlan.length}
-                                >
-                                    {weeklyPlannerSaving ? "Saving..." : "Save to Planner"}
-                                </button>
-                            </div>
-
-                            <div className="ai-weekly-controls">
-                                <select
-                                    name="goal"
-                                    value={weeklyPlannerForm.goal}
-                                    onChange={handleWeeklyPlannerChange}
-                                >
-                                    <option value="Weight Loss">Weight Loss</option>
-                                    <option value="Muscle Gain">Muscle Gain</option>
-                                    <option value="Maintenance">Maintenance</option>
-                                    <option value="High Protein">High Protein</option>
-                                </select>
-
-                                <input
-                                    type="number"
-                                    name="calories"
-                                    placeholder="Daily calories"
-                                    value={weeklyPlannerForm.calories}
-                                    onChange={handleWeeklyPlannerChange}
-                                />
-
-                                <input
-                                    type="number"
-                                    name="proteinTarget"
-                                    placeholder="Protein target"
-                                    value={weeklyPlannerForm.proteinTarget}
-                                    onChange={handleWeeklyPlannerChange}
-                                />
-
-                                <select
-                                    name="dietaryPreference"
-                                    value={weeklyPlannerForm.dietaryPreference}
-                                    onChange={handleWeeklyPlannerChange}
-                                >
-                                    <option value="Balanced">Balanced</option>
-                                    <option value="Vegetarian">Vegetarian</option>
-                                    <option value="High Protein">High Protein</option>
-                                    <option value="Low Carb">Low Carb</option>
-                                    <option value="Indian Style">Indian Style</option>
-                                    <option value="Non-Veg">Non-Veg</option>
-                                </select>
-
-                                <button
-                                    type="button"
-                                    className={weeklyPlannerLoading ? "loading-button" : ""}
-                                    onClick={generateWeeklyPlan}
-                                    disabled={weeklyPlannerLoading}
-                                >
-                                    {weeklyPlannerLoading
-                                        ? "Generating..."
-                                        : "Generate Weekly Plan"}
-                                </button>
-                            </div>
-
-                            {weeklyPlannerError && (
-                                <p className="recommendation-error">{weeklyPlannerError}</p>
-                            )}
-
-                            {weeklyPlannerMessage && (
-                                <p className="weekly-planner-message">{weeklyPlannerMessage}</p>
-                            )}
-
-                            <div className="ai-weekly-grid">
-                                {generatedWeeklyPlan.map((plan) => (
-                                    <div className="ai-weekly-card" key={plan.day}>
-                                        <div className="ai-weekly-card-top">
-                                            <span>{plan.day}</span>
-                                            <div className="macro-badges">
-                                                <strong>{plan.totalCalories} cal</strong>
-                                                <strong>{plan.totalProtein}g protein</strong>
-                                            </div>
-                                        </div>
-
-                                        <div className="ai-weekly-meals">
-                                            <p>
-                                                <span>Breakfast</span>
-                                                {plan.breakfast}
-                                            </p>
-                                            <p>
-                                                <span>Lunch</span>
-                                                {plan.lunch}
-                                            </p>
-                                            <p>
-                                                <span>Dinner</span>
-                                                {plan.dinner}
-                                            </p>
-                                            <p>
-                                                <span>Snack</span>
-                                                {plan.snack}
-                                            </p>
-                                        </div>
-
-                                        <div className="tag-row">
-                                            {(plan.tags || []).map((tag) => (
-                                                <span key={`${plan.day}-${tag}`}>{tag}</span>
-                                            ))}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-                        <section className="ai-coach-section" id="ai-coach-section">
-                            <div className="ai-coach-header">
-                                <div>
-                                    <span>Conversational nutrition coach</span>
-                                    <h2>AI Coach</h2>
-                                    <p>
-                                        Ask FitMeal about meals, calories, protein, snacks,
-                                        substitutions, groceries, hydration, and workout nutrition.
-                                    </p>
-                                </div>
-
-                                <button type="button" onClick={clearCoachChat}>
-                                    Clear Chat
-                                </button>
-                            </div>
-
-                            <div className="coach-profile-strip">
-                                <div>
-                                    <span>Fitness Goal</span>
-                                    <strong>{profileForm.fitnessGoal || "Maintenance"}</strong>
-                                </div>
-                                <div>
-                                    <span>Calories</span>
-                                    <strong>{dailyCalorieGoal || 0} cal</strong>
-                                </div>
-                                <div>
-                                    <span>Protein</span>
-                                    <strong>{dailyProteinGoal || 0}g</strong>
-                                </div>
-                                <div>
-                                    <span>Body</span>
-                                    <strong>{profileForm.weight || 0}kg / {profileForm.height || 0}cm</strong>
-                                </div>
-                            </div>
-
-                            <div className="coach-quick-prompts">
-                                {coachQuickPrompts.map((prompt) => (
-                                    <button
-                                        type="button"
-                                        key={prompt}
-                                        onClick={() => sendCoachMessage(prompt)}
-                                        disabled={coachLoading}
-                                    >
-                                        {prompt}
-                                    </button>
-                                ))}
-                            </div>
-
-                            <div className="coach-chat-window">
-                                {coachMessages.map((message, index) => (
-                                    <div
-                                        className={`coach-message-row ${
-                                            message.role === "user" ? "user-message-row" : "ai-message-row"
-                                        }`}
-                                        key={`${message.role}-${index}`}
-                                    >
-                                        <div className="coach-message-card">
-                                            <p>{message.content}</p>
-
-                                            {message.suggestions?.length > 0 && (
-                                                <div className="coach-rich-block">
-                                                    <span>Suggestions</span>
-                                                    <ul>
-                                                        {message.suggestions.map((suggestion) => (
-                                                            <li key={suggestion}>{suggestion}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-
-                                            {message.tips?.length > 0 && (
-                                                <div className="coach-rich-block tips-block">
-                                                    <span>Tips</span>
-                                                    <ul>
-                                                        {message.tips.map((tip) => (
-                                                            <li key={tip}>{tip}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-
-                                {coachLoading && (
-                                    <div className="coach-message-row ai-message-row">
-                                        <div className="coach-message-card typing-card">
-                                            <span></span>
-                                            <span></span>
-                                            <span></span>
-                                        </div>
-                                    </div>
-                                )}
-
-                                <div ref={coachMessagesEndRef}></div>
-                            </div>
-
-                            {coachError && <p className="coach-error">{coachError}</p>}
-
-                            <div className="coach-input-row">
-                                <textarea
-                                    value={coachInput}
-                                    onChange={(event) => setCoachInput(event.target.value)}
-                                    onKeyDown={handleCoachKeyDown}
-                                    placeholder="Ask your AI Coach about meals, protein, snacks, groceries, or hydration..."
-                                    rows="2"
-                                ></textarea>
-                                <button
-                                    type="button"
-                                    onClick={() => sendCoachMessage()}
-                                    disabled={coachLoading || !coachInput.trim()}
-                                >
-                                    {coachLoading ? "Thinking..." : "Send"}
-                                </button>
-                            </div>
-                        </section>
-                        <section className="food-analyzer-section" id="food-analyzer-section">
-                            <div className="food-analyzer-header">
-                                <div>
-                                    <span>AI food vision</span>
-                                    <h2>Food Image Analyzer</h2>
-                                    <p>
-                                        Upload a meal photo to estimate calories, protein, carbs,
-                                        fat, serving size, and healthier alternatives.
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div className="food-analyzer-layout">
-                                <div
-                                    className={`food-upload-card ${foodImagePreview ? "has-preview" : ""}`}
-                                    onDragOver={(event) => event.preventDefault()}
-                                    onDrop={handleFoodDrop}
-                                >
-                                    {!foodImagePreview ? (
-                                        <>
-                                            <div className="upload-icon">+</div>
-                                            <h3>Drag & drop a food image</h3>
-                                            <p>Supports JPG, JPEG, and PNG files.</p>
-                                            <label className="browse-image-button">
-                                                Browse Image
-                                                <input
-                                                    type="file"
-                                                    accept="image/jpeg,image/jpg,image/png"
-                                                    onChange={handleFoodImageInputChange}
-                                                />
-                                            </label>
-                                        </>
-                                    ) : (
-                                        <div className="food-preview-wrap">
-                                            <img src={foodImagePreview} alt="Selected food preview" />
-                                            <div className="food-preview-actions">
-                                                <button type="button" onClick={analyzeFoodImage} disabled={foodAnalyzerLoading}>
-                                                    {foodAnalyzerLoading ? "Analyzing..." : "Analyze Food"}
-                                                </button>
-                                                <button type="button" className="remove-image-button" onClick={removeFoodImage}>
-                                                    Remove Image
-                                                </button>
-                                            </div>
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="food-result-card">
-                                    {foodAnalyzerLoading && (
-                                        <div className="food-loading-state">
-                                            <div className="food-loading-ring"></div>
-                                            <h3>Analyzing your plate...</h3>
-                                            <p>Estimating nutrition from the image.</p>
-                                        </div>
-                                    )}
-
-                                    {!foodAnalyzerLoading && !foodAnalysis && (
-                                        <div className="food-empty-state">
-                                            <span>Nutrition estimate</span>
-                                            <h3>Your analysis will appear here</h3>
-                                            <p>
-                                                For best results, use a clear image with the whole
-                                                plate visible.
-                                            </p>
-                                        </div>
-                                    )}
-
-                                    {!foodAnalyzerLoading && foodAnalysis && (
-                                        <div className="food-analysis-content">
-                                            <div className="food-result-top">
-                                                <div>
-                                                    <span>Detected food</span>
-                                                    <h3>{foodAnalysis.foodName}</h3>
-                                                    <p>{foodAnalysis.servingSize}</p>
-                                                </div>
-                                                <strong>{foodAnalysis.confidence} confidence</strong>
-                                            </div>
-
-                                            <div className="food-macro-grid">
-                                                <div>
-                                                    <span>Calories</span>
-                                                    <strong>{foodAnalysis.estimatedCalories}</strong>
-                                                </div>
-                                                <div>
-                                                    <span>Protein</span>
-                                                    <strong>{foodAnalysis.protein}g</strong>
-                                                </div>
-                                                <div>
-                                                    <span>Carbs</span>
-                                                    <strong>{foodAnalysis.carbs}g</strong>
-                                                </div>
-                                                <div>
-                                                    <span>Fat</span>
-                                                    <strong>{foodAnalysis.fat}g</strong>
-                                                </div>
-                                            </div>
-
-                                            <div className="food-advice-grid">
-                                                <div>
-                                                    <span>Healthy Tips</span>
-                                                    <ul>
-                                                        {(foodAnalysis.healthyTips || []).map((tip) => (
-                                                            <li key={tip}>{tip}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                                <div>
-                                                    <span>Suggested Alternatives</span>
-                                                    <ul>
-                                                        {(foodAnalysis.suggestedAlternatives || []).map((alternative) => (
-                                                            <li key={alternative}>{alternative}</li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            </div>
-
-                                            <button
-                                                type="button"
-                                                className="save-analysis-button"
-                                                onClick={saveFoodAnalysisAsMeal}
-                                            >
-                                                Save As Meal
-                                            </button>
-                                        </div>
-                                    )}
-
-                                    {foodAnalyzerError && <p className="food-analyzer-error">{foodAnalyzerError}</p>}
-                                    {foodAnalyzerMessage && <p className="food-analyzer-message">{foodAnalyzerMessage}</p>}
-                                </div>
-                            </div>
-                        </section>
-                        <section className="content-grid">
-                            <div className="panel form-panel" id="meal-form-section">
-                                <div className="section-heading">
-                                    <span>
-                                        {editingMealId ? "Update your meal" : "Create a meal"}
-                                    </span>
-                                    <h2>{editingMealId ? "Edit Meal" : "Add Meal"}</h2>
-                                </div>
-
-                                <form className="meal-form" onSubmit={handleSubmit}>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        placeholder="Meal name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                    />
-
-                                    <input
-                                        type="text"
-                                        name="mealType"
-                                        placeholder="Meal type"
-                                        value={formData.mealType}
-                                        onChange={handleChange}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        name="calories"
-                                        placeholder="Calories"
-                                        value={formData.calories}
-                                        onChange={handleChange}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        name="protein"
-                                        placeholder="Protein"
-                                        value={formData.protein}
-                                        onChange={handleChange}
-                                    />
-
-                                    <button type="submit">
-                                        {editingMealId ? "Update Meal" : "Add Meal"}
-                                    </button>
-                                </form>
-                            </div>
-
-                            <div className="panel planner-panel" id="planner-section">
-                                <div className="section-heading">
-                                    <span>Weekly workspace</span>
-                                    <h2>Meal Planner</h2>
-                                </div>
-
-                                <form className="planner-form" onSubmit={handleMealPlanSubmit}>
-                                    <select
-                                        name="day"
-                                        value={mealPlanForm.day}
-                                        onChange={handleMealPlanChange}
-                                    >
-                                        {weekDays.map((day) => (
-                                            <option key={day} value={day}>
-                                                {day}
-                                            </option>
-                                        ))}
-                                    </select>
-
-                                    <input
-                                        type="text"
-                                        name="breakfast"
-                                        placeholder="Breakfast"
-                                        value={mealPlanForm.breakfast}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <input
-                                        type="text"
-                                        name="lunch"
-                                        placeholder="Lunch"
-                                        value={mealPlanForm.lunch}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <input
-                                        type="text"
-                                        name="dinner"
-                                        placeholder="Dinner"
-                                        value={mealPlanForm.dinner}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <input
-                                        type="text"
-                                        name="snack"
-                                        placeholder="Snack"
-                                        value={mealPlanForm.snack}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        name="totalCalories"
-                                        placeholder="Total Calories"
-                                        value={mealPlanForm.totalCalories}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <input
-                                        type="number"
-                                        name="totalProtein"
-                                        placeholder="Total Protein"
-                                        value={mealPlanForm.totalProtein}
-                                        onChange={handleMealPlanChange}
-                                    />
-
-                                    <button type="submit">
-                                        {editingMealPlanId ? "Update Plan" : "Add Plan"}
-                                    </button>
-
-                                    {editingMealPlanId && (
-                                        <button
-                                            className="cancel-plan-btn"
-                                            type="button"
-                                            onClick={clearMealPlanForm}
-                                        >
-                                            Cancel
-                                        </button>
-                                    )}
-                                </form>
-
-                                <div className="planner-grid">
-                                    {sortedMealPlans.map((mealPlan) => (
-                                        <div className="planner-card" key={mealPlan.id}>
-                                            <div className="planner-card-top">
-                                                <span>{mealPlan.day}</span>
-                                                <strong>{mealPlan.totalCalories || 0} cal</strong>
-                                            </div>
-
-                                            <div className="planner-meal-list">
-                                                <p>
-                                                    <span>Breakfast</span>
-                                                    {getPlanMealText(mealPlan.breakfast)}
-                                                </p>
-                                                <p>
-                                                    <span>Lunch</span>
-                                                    {getPlanMealText(mealPlan.lunch)}
-                                                </p>
-                                                <p>
-                                                    <span>Dinner</span>
-                                                    {getPlanMealText(mealPlan.dinner)}
-                                                </p>
-                                                <p>
-                                                    <span>Snack</span>
-                                                    {getPlanMealText(mealPlan.snack)}
-                                                </p>
-                                            </div>
-
-                                            <div className="planner-metrics">
-                                                <span>{mealPlan.totalCalories || 0} Calories</span>
-                                                <span>{mealPlan.totalProtein || 0}g Protein</span>
-                                            </div>
-
-                                            <div className="planner-actions">
-                                                <button
-                                                    className="edit-btn"
-                                                    onClick={() => editMealPlan(mealPlan)}
-                                                >
-                                                    Edit
-                                                </button>
-                                                <button
-                                                    className="delete-btn"
-                                                    onClick={() => deleteMealPlan(mealPlan.id)}
-                                                >
-                                                    Delete
-                                                </button>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                            </div>
-                        </section>
-
-                        <section className="panel meals-section">
-                            <div className="section-top">
-                                <div className="section-heading">
-                                    <span>Your saved meals</span>
-                                    <h2>Meal Library</h2>
-                                </div>
-
-                                <div className="filter-controls">
-                                    <input
-                                        type="text"
-                                        placeholder="Search meals by name"
-                                        value={searchTerm}
-                                        onChange={handleSearchChange}
-                                    />
-
-                                    <select
-                                        value={selectedMealType}
-                                        onChange={handleMealTypeChange}
-                                    >
-                                        <option value="ALL">ALL</option>
-                                        <option value="BREAKFAST">BREAKFAST</option>
-                                        <option value="LUNCH">LUNCH</option>
-                                        <option value="DINNER">DINNER</option>
-                                        <option value="SNACK">SNACK</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div className="meal-grid">
-                                {filteredMeals.map((meal) => (
-                                    <div className="meal-card" key={meal.id}>
-                                        <div className="meal-card-header">
-                                            <h3>{meal.name}</h3>
-                                            <span>{meal.mealType}</span>
-                                        </div>
-
-                                        <div className="meal-metrics">
-                                            <div>
-                                                <strong>{meal.calories}</strong>
-                                                <span>Calories</span>
-                                            </div>
-                                            <div>
-                                                <strong>{meal.protein}g</strong>
-                                                <span>Protein</span>
-                                            </div>
-                                        </div>
-
-                                        <div className="card-actions">
-                                            <button
-                                                className="edit-btn"
-                                                onClick={() => editMeal(meal)}
-                                            >
-                                                Edit
-                                            </button>
-
-                                            <button
-                                                className="delete-btn"
-                                                onClick={() => deleteMeal(meal.id)}
-                                            >
-                                                Delete
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </section>
-
-                        <section className="panel grocery-panel" id="grocery-section">
-                            <div className="grocery-top">
-                                <div className="section-heading">
-                                    <span>Shopping workspace</span>
-                                    <h2>Grocery List</h2>
-                                </div>
-
-                                <div className="grocery-progress">
-                                    <div>
-                                        <strong>
-                                            {purchasedGroceryCount}/{totalGroceryCount}
-                                        </strong>
-                                        <span>Purchased</span>
-                                    </div>
-                                    <div className="progress-track">
-                                        <div
-                                            className="progress-fill"
-                                            style={{ width: `${groceryProgress}%` }}
-                                        ></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <form className="grocery-form" onSubmit={handleGrocerySubmit}>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder="Item name"
-                                    value={groceryForm.name}
-                                    onChange={handleGroceryChange}
-                                />
-
-                                <select
-                                    name="category"
-                                    value={groceryForm.category}
-                                    onChange={handleGroceryChange}
-                                >
-                                    {groceryCategories.map((category) => (
-                                        <option key={category} value={category}>
-                                            {category}
-                                        </option>
-                                    ))}
-                                </select>
-
-                                <input
-                                    type="text"
-                                    name="quantity"
-                                    placeholder="Quantity"
-                                    value={groceryForm.quantity}
-                                    onChange={handleGroceryChange}
-                                />
-
-                                <input
-                                    type="text"
-                                    name="unit"
-                                    placeholder="Unit"
-                                    value={groceryForm.unit}
-                                    onChange={handleGroceryChange}
-                                />
-
-                                <button type="submit">
-                                    {editingGroceryId ? "Update Item" : "Add Item"}
-                                </button>
-
-                                {editingGroceryId && (
-                                    <button
-                                        className="cancel-grocery-btn"
-                                        type="button"
-                                        onClick={clearGroceryForm}
-                                    >
-                                        Cancel
-                                    </button>
-                                )}
-                            </form>
-
-                            <div className="grocery-category-grid">
-                                {groceryCategories.map((category) => {
-                                    const categoryItems = getGroceryItemsByCategory(category);
-
-                                    return (
-                                        <div className="grocery-category-card" key={category}>
-                                            <div className="grocery-category-header">
-                                                <h3>{category}</h3>
-                                                <span>{categoryItems.length}</span>
-                                            </div>
-
-                                            <div className="grocery-items-stack">
-                                                {categoryItems.length === 0 ? (
-                                                    <p className="empty-grocery-text">No items yet</p>
-                                                ) : (
-                                                    categoryItems.map((item) => (
-                                                        <div
-                                                            className={
-                                                                item.purchased
-                                                                    ? "grocery-item-row purchased"
-                                                                    : "grocery-item-row"
-                                                            }
-                                                            key={item.id}
-                                                        >
-                                                            <label className="grocery-check">
-                                                                <input
-                                                                    type="checkbox"
-                                                                    checked={item.purchased}
-                                                                    onChange={() =>
-                                                                        toggleGroceryPurchased(item.id)
-                                                                    }
-                                                                />
-                                                                <span></span>
-                                                            </label>
-
-                                                            <div className="grocery-item-info">
-                                                                <strong>{item.name}</strong>
-                                                                <p>
-                                                                    {item.quantity} {item.unit}
-                                                                </p>
-                                                            </div>
-
-                                                            <span className="category-badge">
-                                                                {item.category || "Other"}
-                                                            </span>
-
-                                                            <div className="grocery-actions">
-                                                                <button
-                                                                    className="edit-btn"
-                                                                    onClick={() =>
-                                                                        editGroceryItem(item)
-                                                                    }
-                                                                >
-                                                                    Edit
-                                                                </button>
-                                                                <button
-                                                                    className="delete-btn"
-                                                                    onClick={() =>
-                                                                        deleteGroceryItem(item.id)
-                                                                    }
-                                                                >
-                                                                    Delete
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    ))
-                                                )}
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        </section>
-                    </main>
-                </>
-            )}
+                        }
+                    />
+                    <Route path="/meals" element={<MealsPage view={pageView} />} />
+                    <Route
+                        path="/planner"
+                        element={
+                            <PlannerPage
+                                onMealPlanUpdated={fetchMealPlans}
+                                onSessionExpired={logout}
+                                view={pageView}
+                            />
+                        }
+                    />
+                    <Route path="/ai-picks" element={<AiPicksPage view={pageView} />} />
+                    <Route path="/ai-planner" element={<AiPlannerPage view={pageView} />} />
+                    <Route path="/ai-coach" element={<AiCoachPage view={pageView} />} />
+                    <Route path="/food-analyzer" element={<FoodAnalyzerPage view={pageView} />} />
+                    <Route path="/grocery" element={<GroceryPage view={pageView} />} />
+                    <Route path="/" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="/login" element={<Navigate to="/dashboard" replace />} />
+                    <Route path="*" element={<Navigate to="/dashboard" replace />} />
+                </Routes>
+            </Suspense>
         </div>
     );
 }
 
 export default App;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

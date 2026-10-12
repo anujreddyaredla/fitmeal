@@ -1,5 +1,6 @@
 package com.fitmeal.backend.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -28,6 +29,26 @@ public class MealPlan {
     private String snack;
     private int totalCalories;
     private int totalProtein;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "breakfast_catalog_meal_id")
+    private CatalogMeal breakfastCatalogMeal;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lunch_catalog_meal_id")
+    private CatalogMeal lunchCatalogMeal;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "dinner_catalog_meal_id")
+    private CatalogMeal dinnerCatalogMeal;
+
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "snack_catalog_meal_id")
+    private CatalogMeal snackCatalogMeal;
 
     public MealPlan() {
     }
@@ -119,6 +140,38 @@ public class MealPlan {
 
     public void setTotalProtein(int totalProtein) {
         this.totalProtein = totalProtein;
+    }
+
+    public CatalogMeal getBreakfastCatalogMeal() {
+        return breakfastCatalogMeal;
+    }
+
+    public void setBreakfastCatalogMeal(CatalogMeal breakfastCatalogMeal) {
+        this.breakfastCatalogMeal = breakfastCatalogMeal;
+    }
+
+    public CatalogMeal getLunchCatalogMeal() {
+        return lunchCatalogMeal;
+    }
+
+    public void setLunchCatalogMeal(CatalogMeal lunchCatalogMeal) {
+        this.lunchCatalogMeal = lunchCatalogMeal;
+    }
+
+    public CatalogMeal getDinnerCatalogMeal() {
+        return dinnerCatalogMeal;
+    }
+
+    public void setDinnerCatalogMeal(CatalogMeal dinnerCatalogMeal) {
+        this.dinnerCatalogMeal = dinnerCatalogMeal;
+    }
+
+    public CatalogMeal getSnackCatalogMeal() {
+        return snackCatalogMeal;
+    }
+
+    public void setSnackCatalogMeal(CatalogMeal snackCatalogMeal) {
+        this.snackCatalogMeal = snackCatalogMeal;
     }
 }
 

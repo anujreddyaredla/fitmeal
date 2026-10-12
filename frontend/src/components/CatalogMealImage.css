@@ -1,0 +1,34 @@
+.catalog-meal-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.catalog-image-fallback {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background: linear-gradient(135deg, #dff5e5, #f8fff9 55%, #c8ebd1);
+  color: #176c3c;
+}
+
+.catalog-image-fallback.lunch,
+.catalog-image-fallback.dinner {
+  background: linear-gradient(135deg, #d9f1e1, #f7fff8 50%, #bfe1ca);
+}
+
+.catalog-image-fallback img {
+  width: 72px;
+  height: 72px;
+  object-fit: contain;
+  opacity: 0.82;
+}
+
+.catalog-image-fallback span {
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 950;
+}

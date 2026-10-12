@@ -11,4 +11,6 @@ public interface MealPlanRepository extends JpaRepository<MealPlan, Long> {
     List<MealPlan> findByOwner_EmailOrderByIdAsc(String ownerEmail);
 
     Optional<MealPlan> findByIdAndOwner_Email(Long id, String ownerEmail);
+
+    Optional<MealPlan> findFirstByOwner_EmailAndDayIgnoreCase(String ownerEmail, String day);
 }

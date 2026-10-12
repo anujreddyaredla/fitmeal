@@ -1,0 +1,741 @@
+[
+  {
+    "slug": "egg-avocado-toast",
+    "name": "Egg and Avocado Toast",
+    "description": "Whole-grain toast topped with creamy avocado, eggs, and fresh tomato.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/egg-avocado-toast.jpg",
+    "servingSize": "2 topped toast slices",
+    "calories": 420,
+    "protein": 20,
+    "carbohydrates": 38,
+    "fat": 22,
+    "fiber": 10,
+    "prepMinutes": 8,
+    "cookMinutes": 8,
+    "dietaryTags": ["Vegetarian", "High Fiber", "Healthy Fat"],
+    "equipment": ["Small saucepan", "Toaster", "Bowl"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "2", "unit": "slices", "name": "whole-grain bread", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "2", "unit": null, "name": "large eggs", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": null, "name": "ripe avocado", "preparationNote": "Peeled and pitted"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "cherry tomatoes", "preparationNote": "Halved"},
+      {"displayOrder": 5, "quantity": "1", "unit": "tsp", "name": "lemon juice", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "pinch", "name": "salt and black pepper", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Boil the eggs", "instruction": "Place the eggs in a small saucepan and cover them with cold water. Bring to a boil over high heat, then lower the heat and simmer for 8 minutes.", "estimatedMinutes": 8, "safetyNote": "Cook eggs until the whites and yolks are firm."},
+      {"stepNumber": 2, "title": "Mash the avocado", "instruction": "Put the avocado in a bowl. Add lemon juice, salt, and pepper, then mash with a fork until mostly smooth.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 3, "title": "Toast and cool the eggs", "instruction": "Toast the bread until crisp. Drain the hot water from the eggs, cool them under cold running water, peel them, and slice them.", "estimatedMinutes": 3, "safetyNote": "Handle the hot saucepan carefully."},
+      {"stepNumber": 4, "title": "Assemble", "instruction": "Spread avocado over each toast slice. Add sliced egg and tomatoes, then finish with black pepper.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "oatmeal-with-berries",
+    "name": "Oatmeal with Berries",
+    "description": "Warm cinnamon oats with mixed berries, chia seeds, and a touch of yogurt.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/oatmeal-with-berries.jpg",
+    "servingSize": "1 bowl",
+    "calories": 390,
+    "protein": 16,
+    "carbohydrates": 62,
+    "fat": 9,
+    "fiber": 11,
+    "prepMinutes": 5,
+    "cookMinutes": 7,
+    "dietaryTags": ["Vegetarian", "High Fiber", "Whole Grain"],
+    "equipment": ["Small saucepan", "Wooden spoon", "Serving bowl"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1/2", "unit": "cup", "name": "rolled oats", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1", "unit": "cup", "name": "low-fat milk", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "3/4", "unit": "cup", "name": "mixed berries", "preparationNote": "Fresh or frozen"},
+      {"displayOrder": 4, "quantity": "1", "unit": "tbsp", "name": "chia seeds", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/4", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1/4", "unit": "tsp", "name": "ground cinnamon", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Heat the milk", "instruction": "Pour the milk into a small saucepan and heat it over medium heat until small bubbles appear around the edge. Do not let it boil over.", "estimatedMinutes": 3, "safetyNote": null},
+      {"stepNumber": 2, "title": "Cook the oats", "instruction": "Stir in the oats and cinnamon. Lower the heat to medium-low and cook for 4 to 5 minutes, stirring often, until thick and creamy.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 3, "title": "Add berries", "instruction": "Stir half of the berries into the oats for the final minute. Frozen berries should be hot all the way through.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 4, "title": "Finish the bowl", "instruction": "Pour the oats into a bowl. Top with yogurt, chia seeds, and the remaining berries. Let it cool for 1 minute before eating.", "estimatedMinutes": 2, "safetyNote": "Hot oatmeal can hold heat; test a small spoonful first."}
+    ]
+  },
+  {
+    "slug": "greek-yogurt-berry-bowl",
+    "name": "Greek Yogurt Berry Bowl",
+    "description": "Protein-rich Greek yogurt with berries, banana, oats, and crunchy seeds.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/greek-yogurt-berry-bowl.jpg",
+    "servingSize": "1 bowl",
+    "calories": 360,
+    "protein": 28,
+    "carbohydrates": 45,
+    "fat": 8,
+    "fiber": 8,
+    "prepMinutes": 8,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "No Cook"],
+    "equipment": ["Serving bowl", "Kitchen knife", "Measuring cups"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1/2", "unit": "cup", "name": "mixed berries", "preparationNote": "Rinsed and dried"},
+      {"displayOrder": 3, "quantity": "1/2", "unit": null, "name": "banana", "preparationNote": "Sliced"},
+      {"displayOrder": 4, "quantity": "1/4", "unit": "cup", "name": "rolled oats", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1", "unit": "tbsp", "name": "pumpkin seeds", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "honey", "preparationNote": "Optional"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the fruit", "instruction": "Rinse the berries under cool water and pat them dry. Peel and slice the banana into bite-sized rounds.", "estimatedMinutes": 3, "safetyNote": "Use a stable cutting board when slicing."},
+      {"stepNumber": 2, "title": "Add the yogurt", "instruction": "Spoon the Greek yogurt into a wide bowl and spread it into an even layer.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 3, "title": "Arrange the toppings", "instruction": "Place the berries, banana, oats, and pumpkin seeds in separate rows over the yogurt.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve", "instruction": "Drizzle with honey if desired and serve immediately so the oats and seeds stay crisp.", "estimatedMinutes": 1, "safetyNote": "Keep yogurt refrigerated until ready to use."}
+    ]
+  },
+  {
+    "slug": "protein-pancakes",
+    "name": "Protein Pancakes",
+    "description": "Soft banana-oat pancakes made with eggs and cottage cheese for extra protein.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/protein-pancakes.jpg",
+    "servingSize": "4 small pancakes",
+    "calories": 440,
+    "protein": 34,
+    "carbohydrates": 52,
+    "fat": 12,
+    "fiber": 7,
+    "prepMinutes": 8,
+    "cookMinutes": 12,
+    "dietaryTags": ["Vegetarian", "High Protein", "Whole Grain"],
+    "equipment": ["Blender", "Nonstick frying pan", "Spatula"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1/2", "unit": "cup", "name": "rolled oats", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1/2", "unit": "cup", "name": "low-fat cottage cheese", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "2", "unit": null, "name": "large eggs", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": null, "name": "small banana", "preparationNote": "Peeled"},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "tsp", "name": "baking powder", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "olive oil", "preparationNote": "For the pan"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Blend the batter", "instruction": "Add oats, cottage cheese, eggs, banana, and baking powder to a blender. Blend for 30 to 45 seconds until mostly smooth.", "estimatedMinutes": 2, "safetyNote": "Make sure the blender lid is secure before starting."},
+      {"stepNumber": 2, "title": "Heat the pan", "instruction": "Place a nonstick pan over medium-low heat. Add the oil and spread it over the surface. The pan is ready when a drop of water gently sizzles.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 3, "title": "Cook the first side", "instruction": "Pour about 1/4 cup of batter for each pancake. Cook for 2 to 3 minutes until bubbles form and the edges look set.", "estimatedMinutes": 6, "safetyNote": "Keep the heat medium-low so the outside does not burn before the egg cooks."},
+      {"stepNumber": 4, "title": "Flip and serve", "instruction": "Slide a spatula under each pancake, flip, and cook for 1 to 2 more minutes. Serve when both sides are golden and the center is firm.", "estimatedMinutes": 4, "safetyNote": "Egg-based batter should be cooked through, not wet in the center."}
+    ]
+  },
+  {
+    "slug": "egg-vegetable-omelette",
+    "name": "Egg and Vegetable Omelette",
+    "description": "A colorful omelette filled with spinach, bell pepper, mushrooms, and feta.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/egg-vegetable-omelette.jpg",
+    "servingSize": "1 large omelette",
+    "calories": 380,
+    "protein": 30,
+    "carbohydrates": 18,
+    "fat": 22,
+    "fiber": 5,
+    "prepMinutes": 10,
+    "cookMinutes": 10,
+    "dietaryTags": ["Vegetarian", "High Protein", "Low Carb"],
+    "equipment": ["Bowl", "Whisk or fork", "Nonstick frying pan", "Spatula"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "3", "unit": null, "name": "large eggs", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "bell pepper", "preparationNote": "Diced"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "mushrooms", "preparationNote": "Sliced"},
+      {"displayOrder": 5, "quantity": "2", "unit": "tbsp", "name": "feta cheese", "preparationNote": "Crumbled"},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "olive oil", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Whisk the eggs", "instruction": "Crack the eggs into a bowl, add a pinch of salt and pepper, and whisk with a fork until the yolks and whites are fully combined.", "estimatedMinutes": 2, "safetyNote": "Wash your hands after touching raw egg shells."},
+      {"stepNumber": 2, "title": "Cook the vegetables", "instruction": "Heat oil in a nonstick pan over medium heat. Add pepper and mushrooms and cook for 4 minutes, then add spinach and stir until wilted.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 3, "title": "Add the eggs", "instruction": "Spread the vegetables evenly and pour in the eggs. Reduce the heat to medium-low. Gently lift the cooked edges so uncooked egg can flow underneath.", "estimatedMinutes": 3, "safetyNote": null},
+      {"stepNumber": 4, "title": "Fold and finish", "instruction": "When the top is nearly set, add feta to one half. Fold the other half over and cook for 1 more minute before sliding onto a plate.", "estimatedMinutes": 2, "safetyNote": "The eggs should be fully set with no runny areas."}
+    ]
+  },
+  {
+    "slug": "high-protein-overnight-oats",
+    "name": "High-Protein Overnight Oats",
+    "description": "Creamy make-ahead oats with Greek yogurt, chia seeds, and berries.",
+    "category": "BREAKFAST",
+    "imagePath": "/images/meals/high-protein-overnight-oats.jpg",
+    "servingSize": "1 jar",
+    "calories": 410,
+    "protein": 26,
+    "carbohydrates": 58,
+    "fat": 10,
+    "fiber": 10,
+    "prepMinutes": 8,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "Meal Prep"],
+    "equipment": ["Jar with lid", "Spoon", "Measuring cups"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1/2", "unit": "cup", "name": "rolled oats", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1/2", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "low-fat milk", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": "tbsp", "name": "chia seeds", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "cup", "name": "mixed berries", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "maple syrup", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Combine the base", "instruction": "Add oats, yogurt, milk, chia seeds, and maple syrup to a clean jar. Stir until no dry oats remain at the bottom.", "estimatedMinutes": 3, "safetyNote": null},
+      {"stepNumber": 2, "title": "Add the fruit", "instruction": "Gently fold in half of the berries and place the remaining berries on top.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 3, "title": "Chill overnight", "instruction": "Close the jar and refrigerate for at least 6 hours. The oats and chia seeds will absorb the liquid and soften.", "estimatedMinutes": 1, "safetyNote": "Keep the jar refrigerated at 40 F / 4 C or colder."},
+      {"stepNumber": 4, "title": "Check and serve", "instruction": "Stir before eating. If the oats are too thick, add 1 or 2 tablespoons of milk until they reach the texture you prefer.", "estimatedMinutes": 1, "safetyNote": "Eat refrigerated overnight oats within 3 days."}
+    ]
+  },
+  {
+    "slug": "chicken-rice-bowl",
+    "name": "Chicken and Rice Bowl",
+    "description": "Seasoned chicken breast, brown rice, broccoli, and peppers in a balanced bowl.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/chicken-rice-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 650,
+    "protein": 48,
+    "carbohydrates": 75,
+    "fat": 18,
+    "fiber": 8,
+    "prepMinutes": 12,
+    "cookMinutes": 25,
+    "dietaryTags": ["High Protein", "Balanced", "Meal Prep"],
+    "equipment": ["Saucepan with lid", "Cutting board", "Large frying pan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "boneless chicken breast", "preparationNote": "Cut into 2 cm pieces"},
+      {"displayOrder": 2, "quantity": "75", "unit": "g", "name": "uncooked brown rice", "preparationNote": "Rinsed"},
+      {"displayOrder": 3, "quantity": "1", "unit": "cup", "name": "broccoli florets", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "red bell pepper", "preparationNote": "Sliced"},
+      {"displayOrder": 5, "quantity": "2", "unit": "tsp", "name": "olive oil", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "paprika and garlic powder", "preparationNote": "Combined"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Cook the rice", "instruction": "Rinse the rice under cold water. Put it in a saucepan with water according to the package directions. Bring to a boil, cover, lower the heat, and simmer until tender.", "estimatedMinutes": 25, "safetyNote": "Keep the saucepan handle turned away from the edge of the stove."},
+      {"stepNumber": 2, "title": "Prepare the chicken", "instruction": "Pat the chicken dry and cut it into evenly sized pieces on a separate cutting board. Toss it with paprika, garlic powder, salt, and pepper.", "estimatedMinutes": 5, "safetyNote": "Wash hands, knife, and board after handling raw chicken."},
+      {"stepNumber": 3, "title": "Cook chicken and vegetables", "instruction": "Heat oil in a large pan over medium-high heat. Cook the chicken for 6 to 8 minutes, turning often. Add broccoli and pepper with 2 tablespoons of water, cover, and cook 4 minutes.", "estimatedMinutes": 12, "safetyNote": "Chicken must reach 165 F / 74 C at its thickest point."},
+      {"stepNumber": 4, "title": "Build the bowl", "instruction": "Fluff the cooked rice with a fork. Add rice to a bowl, then arrange the chicken and vegetables on top. Taste before adding extra salt.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "quinoa-chicken-bowl",
+    "name": "Quinoa Chicken Bowl",
+    "description": "Herbed chicken with quinoa, cucumber, tomato, spinach, and lemon yogurt.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/quinoa-chicken-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 610,
+    "protein": 50,
+    "carbohydrates": 58,
+    "fat": 20,
+    "fiber": 10,
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "dietaryTags": ["High Protein", "High Fiber", "Balanced"],
+    "equipment": ["Fine-mesh strainer", "Saucepan", "Frying pan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "boneless chicken breast", "preparationNote": "Sliced"},
+      {"displayOrder": 2, "quantity": "1/2", "unit": "cup", "name": "dry quinoa", "preparationNote": "Rinsed well"},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "cucumber", "preparationNote": "Diced"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "cherry tomatoes", "preparationNote": "Halved"},
+      {"displayOrder": 5, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1/4", "unit": "cup", "name": "Greek yogurt", "preparationNote": "Mixed with lemon juice"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Cook the quinoa", "instruction": "Rinse quinoa in a fine strainer. Add it to a saucepan with 1 cup water, bring to a boil, cover, and simmer on low for about 15 minutes. Rest covered for 5 minutes.", "estimatedMinutes": 20, "safetyNote": null},
+      {"stepNumber": 2, "title": "Season the chicken", "instruction": "Pat chicken dry and season with salt, pepper, garlic powder, and dried oregano.", "estimatedMinutes": 3, "safetyNote": "Keep raw chicken separate from vegetables that will be eaten uncooked."},
+      {"stepNumber": 3, "title": "Cook the chicken", "instruction": "Heat a lightly oiled pan over medium-high heat. Cook chicken for 4 to 5 minutes per side until golden and fully cooked, then rest it for 3 minutes.", "estimatedMinutes": 12, "safetyNote": "Chicken must reach 165 F / 74 C internally."},
+      {"stepNumber": 4, "title": "Assemble", "instruction": "Fluff quinoa and add it to a bowl with spinach, cucumber, and tomato. Slice the rested chicken, place it on top, and spoon over the lemon yogurt.", "estimatedMinutes": 3, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "grilled-chicken-salad",
+    "name": "Grilled Chicken Salad",
+    "description": "Juicy chicken over crisp greens with vegetables, avocado, and lemon dressing.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/grilled-chicken-salad.jpg",
+    "servingSize": "1 large salad",
+    "calories": 470,
+    "protein": 46,
+    "carbohydrates": 24,
+    "fat": 22,
+    "fiber": 9,
+    "prepMinutes": 15,
+    "cookMinutes": 12,
+    "dietaryTags": ["High Protein", "Low Carb", "Gluten Free"],
+    "equipment": ["Frying or grill pan", "Large bowl", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "boneless chicken breast", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "3", "unit": "cups", "name": "mixed salad greens", "preparationNote": "Washed and dried"},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "cucumber", "preparationNote": "Sliced"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "cherry tomatoes", "preparationNote": "Halved"},
+      {"displayOrder": 5, "quantity": "1/2", "unit": null, "name": "avocado", "preparationNote": "Sliced"},
+      {"displayOrder": 6, "quantity": "1", "unit": "tbsp", "name": "olive oil and lemon dressing", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the salad", "instruction": "Wash and dry the greens and vegetables. Slice the cucumber, tomatoes, and avocado, then place everything except the avocado in a large bowl.", "estimatedMinutes": 8, "safetyNote": "Use a clean board for vegetables."},
+      {"stepNumber": 2, "title": "Season the chicken", "instruction": "Pat chicken dry, brush it lightly with oil, and season both sides with salt, pepper, and paprika.", "estimatedMinutes": 2, "safetyNote": "Wash your hands and tools after handling raw chicken."},
+      {"stepNumber": 3, "title": "Cook and rest", "instruction": "Heat a pan over medium-high heat. Cook chicken for 5 to 6 minutes per side, then rest it on a clean plate for 3 minutes before slicing.", "estimatedMinutes": 15, "safetyNote": "Chicken must reach 165 F / 74 C internally."},
+      {"stepNumber": 4, "title": "Dress and serve", "instruction": "Toss the greens and vegetables with the lemon dressing. Add avocado and sliced chicken on top, then serve immediately.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "chicken-burrito-bowl",
+    "name": "Chicken Burrito Bowl",
+    "description": "A filling bowl with spiced chicken, rice, black beans, corn, and fresh salsa.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/chicken-burrito-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 680,
+    "protein": 52,
+    "carbohydrates": 74,
+    "fat": 20,
+    "fiber": 13,
+    "prepMinutes": 15,
+    "cookMinutes": 20,
+    "dietaryTags": ["High Protein", "High Fiber", "Meal Prep"],
+    "equipment": ["Saucepan", "Frying pan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "boneless chicken breast", "preparationNote": "Diced"},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "black beans", "preparationNote": "Drained and rinsed"},
+      {"displayOrder": 4, "quantity": "1/3", "unit": "cup", "name": "corn", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "cup", "name": "fresh tomato salsa", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "cumin and chili powder", "preparationNote": "Combined"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Warm the base", "instruction": "Cook rice according to its package if needed. Warm the beans and corn in a small saucepan over medium-low heat with 2 tablespoons of water.", "estimatedMinutes": 6, "safetyNote": null},
+      {"stepNumber": 2, "title": "Season the chicken", "instruction": "Pat chicken dry and toss it with cumin, chili powder, a pinch of salt, and 1 teaspoon oil.", "estimatedMinutes": 3, "safetyNote": "Clean surfaces that touch raw chicken."},
+      {"stepNumber": 3, "title": "Cook the chicken", "instruction": "Heat a pan over medium-high heat. Cook the diced chicken for 7 to 9 minutes, stirring every 1 to 2 minutes, until browned and cooked through.", "estimatedMinutes": 9, "safetyNote": "Chicken must reach 165 F / 74 C internally."},
+      {"stepNumber": 4, "title": "Build the bowl", "instruction": "Add rice to the bowl, followed by beans, corn, chicken, and salsa. Keep each ingredient in a section or mix them together before eating.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "paneer-rice-bowl",
+    "name": "Paneer Rice Bowl",
+    "description": "Golden paneer, brown rice, peas, peppers, and spinach with warm Indian spices.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/paneer-rice-bowl.jpg",
+    "servingSize": "1 bowl",
+    "calories": 640,
+    "protein": 32,
+    "carbohydrates": 68,
+    "fat": 27,
+    "fiber": 9,
+    "prepMinutes": 12,
+    "cookMinutes": 18,
+    "dietaryTags": ["Vegetarian", "High Protein", "Indian Style"],
+    "equipment": ["Saucepan", "Nonstick frying pan", "Spatula"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "120", "unit": "g", "name": "paneer", "preparationNote": "Cut into cubes"},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "green peas", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "bell pepper", "preparationNote": "Sliced"},
+      {"displayOrder": 5, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "garam masala", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the ingredients", "instruction": "Cut paneer into equal cubes and slice the pepper. Measure the peas, spinach, rice, and spices before heating the pan.", "estimatedMinutes": 6, "safetyNote": "Use a stable cutting board."},
+      {"stepNumber": 2, "title": "Brown the paneer", "instruction": "Heat a nonstick pan over medium heat with 1 teaspoon oil. Add paneer in one layer and cook for 5 to 6 minutes, turning until several sides are golden.", "estimatedMinutes": 6, "safetyNote": "Turn paneer gently to avoid hot oil splashes."},
+      {"stepNumber": 3, "title": "Cook the vegetables", "instruction": "Add pepper, peas, garam masala, and 2 tablespoons of water. Cook for 4 minutes, then stir in spinach until wilted.", "estimatedMinutes": 6, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve", "instruction": "Warm the rice, place it in a bowl, and spoon the paneer and vegetables over it. Taste and add salt only if needed.", "estimatedMinutes": 2, "safetyNote": "Reheated rice should be steaming hot throughout."}
+    ]
+  },
+  {
+    "slug": "tofu-vegetable-bowl",
+    "name": "Tofu Vegetable Bowl",
+    "description": "Crisp tofu with brown rice, edamame, broccoli, carrots, and sesame sauce.",
+    "category": "LUNCH",
+    "imagePath": "/images/meals/tofu-vegetable-bowl.jpg",
+    "servingSize": "1 bowl",
+    "calories": 540,
+    "protein": 30,
+    "carbohydrates": 58,
+    "fat": 22,
+    "fiber": 12,
+    "prepMinutes": 15,
+    "cookMinutes": 18,
+    "dietaryTags": ["Vegetarian", "High Fiber", "Plant Protein"],
+    "equipment": ["Paper towels", "Frying pan", "Spatula"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "180", "unit": "g", "name": "extra-firm tofu", "preparationNote": "Drained and cubed"},
+      {"displayOrder": 2, "quantity": "2/3", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "shelled edamame", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": "cup", "name": "broccoli florets", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "cup", "name": "carrot", "preparationNote": "Thinly sliced"},
+      {"displayOrder": 6, "quantity": "1", "unit": "tbsp", "name": "low-sodium soy sesame sauce", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Dry the tofu", "instruction": "Wrap tofu in paper towels and press it gently under a plate for 5 minutes. Cut it into even cubes so the pieces cook at the same rate.", "estimatedMinutes": 7, "safetyNote": null},
+      {"stepNumber": 2, "title": "Crisp the tofu", "instruction": "Heat 1 teaspoon oil in a pan over medium-high heat. Add tofu in one layer and cook for 8 minutes, turning every 2 minutes until golden.", "estimatedMinutes": 8, "safetyNote": "Add tofu carefully because remaining moisture may cause light splattering."},
+      {"stepNumber": 3, "title": "Cook the vegetables", "instruction": "Add broccoli, carrot, edamame, and 3 tablespoons of water. Cover and cook for 4 to 5 minutes until bright and tender-crisp.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 4, "title": "Sauce and serve", "instruction": "Pour in the sauce and stir for 1 minute. Serve the tofu and vegetables over hot brown rice.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "berry-protein-shake",
+    "name": "Berry Protein Shake",
+    "description": "A cold berry smoothie with Greek yogurt, milk, oats, and chia seeds.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/berry-protein-shake.jpg",
+    "servingSize": "1 large glass",
+    "calories": 310,
+    "protein": 32,
+    "carbohydrates": 38,
+    "fat": 5,
+    "fiber": 8,
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "Quick"],
+    "equipment": ["Blender", "Measuring cup"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": "cup", "name": "frozen mixed berries", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "low-fat milk", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "2", "unit": "tbsp", "name": "rolled oats", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1", "unit": "tbsp", "name": "chia seeds", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Add liquids first", "instruction": "Pour the milk and yogurt into the blender first. This helps the blades move freely.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 2, "title": "Add remaining ingredients", "instruction": "Add berries, oats, and chia seeds. Secure the blender lid firmly.", "estimatedMinutes": 1, "safetyNote": "Never place utensils inside a blender while it is running."},
+      {"stepNumber": 3, "title": "Blend", "instruction": "Blend on low for 15 seconds, then high for 30 to 45 seconds until smooth. Stop and scrape the sides only after the blades stop.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 4, "title": "Adjust and serve", "instruction": "Add a splash of milk if the shake is too thick, blend briefly again, and serve immediately.", "estimatedMinutes": 1, "safetyNote": "Keep dairy ingredients refrigerated until use."}
+    ]
+  },
+  {
+    "slug": "banana-protein-shake",
+    "name": "Banana Protein Shake",
+    "description": "Banana, peanut butter, milk, and Greek yogurt blended into a filling snack.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/banana-protein-shake.jpg",
+    "servingSize": "1 large glass",
+    "calories": 350,
+    "protein": 34,
+    "carbohydrates": 48,
+    "fat": 6,
+    "fiber": 7,
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "Quick"],
+    "equipment": ["Blender", "Measuring cup"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": null, "name": "frozen banana", "preparationNote": "Sliced"},
+      {"displayOrder": 2, "quantity": "1", "unit": "cup", "name": "low-fat milk", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": "tbsp", "name": "natural peanut butter", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/4", "unit": "tsp", "name": "ground cinnamon", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Load the blender", "instruction": "Add milk and yogurt first, followed by banana, peanut butter, and cinnamon.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 2, "title": "Secure the lid", "instruction": "Place the lid firmly on the blender and hold it in place before switching the machine on.", "estimatedMinutes": 1, "safetyNote": "Do not operate the blender without its lid."},
+      {"stepNumber": 3, "title": "Blend until smooth", "instruction": "Blend on low for 15 seconds and then high for about 30 seconds. The shake should have no visible banana pieces.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve", "instruction": "Pour into a glass. If needed, blend in 1 or 2 tablespoons of milk to make it thinner.", "estimatedMinutes": 1, "safetyNote": "Serve promptly or refrigerate and drink within 24 hours."}
+    ]
+  },
+  {
+    "slug": "apple-peanut-butter-yogurt",
+    "name": "Apple Peanut Butter Yogurt",
+    "description": "Crisp apple with Greek yogurt, peanut butter, cinnamon, and walnuts.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/apple-peanut-butter-yogurt.jpg",
+    "servingSize": "1 bowl",
+    "calories": 330,
+    "protein": 22,
+    "carbohydrates": 38,
+    "fat": 12,
+    "fiber": 7,
+    "prepMinutes": 7,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "No Cook"],
+    "equipment": ["Cutting board", "Kitchen knife", "Serving bowl"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "3/4", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1", "unit": null, "name": "small apple", "preparationNote": "Cored and diced"},
+      {"displayOrder": 3, "quantity": "1", "unit": "tbsp", "name": "natural peanut butter", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": "tbsp", "name": "walnuts", "preparationNote": "Chopped"},
+      {"displayOrder": 5, "quantity": "1/4", "unit": "tsp", "name": "ground cinnamon", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the apple", "instruction": "Rinse and dry the apple. Cut it into quarters, remove the core, and dice it into small bite-sized pieces.", "estimatedMinutes": 4, "safetyNote": "Keep fingertips curled away from the knife blade."},
+      {"stepNumber": 2, "title": "Fill the bowl", "instruction": "Spoon Greek yogurt into a bowl and stir in the cinnamon.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 3, "title": "Add toppings", "instruction": "Add the diced apple and chopped walnuts. Warm the peanut butter for 10 seconds only if needed to make it easier to drizzle.", "estimatedMinutes": 1, "safetyNote": "Confirm the container is microwave safe before warming peanut butter."},
+      {"stepNumber": 4, "title": "Serve", "instruction": "Drizzle peanut butter over the bowl and serve immediately for the best texture.", "estimatedMinutes": 1, "safetyNote": "Contains peanuts and tree nuts."}
+    ]
+  },
+  {
+    "slug": "cottage-cheese-fruit-bowl",
+    "name": "Cottage Cheese Fruit Bowl",
+    "description": "Creamy cottage cheese with pineapple, berries, and sunflower seeds.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/cottage-cheese-fruit-bowl.jpg",
+    "servingSize": "1 bowl",
+    "calories": 280,
+    "protein": 28,
+    "carbohydrates": 30,
+    "fat": 6,
+    "fiber": 5,
+    "prepMinutes": 5,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Protein", "No Cook"],
+    "equipment": ["Serving bowl", "Measuring cups"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": "cup", "name": "low-fat cottage cheese", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1/2", "unit": "cup", "name": "pineapple chunks", "preparationNote": "Drained if canned"},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "strawberries", "preparationNote": "Sliced"},
+      {"displayOrder": 4, "quantity": "1", "unit": "tbsp", "name": "sunflower seeds", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1", "unit": "pinch", "name": "ground cinnamon", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the fruit", "instruction": "Drain the pineapple if needed. Rinse, dry, remove the tops from the strawberries, and slice them.", "estimatedMinutes": 3, "safetyNote": null},
+      {"stepNumber": 2, "title": "Add cottage cheese", "instruction": "Spoon the cottage cheese into a serving bowl and smooth the top.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 3, "title": "Top the bowl", "instruction": "Arrange pineapple and strawberries over the cottage cheese, then sprinkle with sunflower seeds and cinnamon.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve cold", "instruction": "Eat immediately or cover and refrigerate for up to one day.", "estimatedMinutes": 1, "safetyNote": "Keep cottage cheese refrigerated at 40 F / 4 C or colder."}
+    ]
+  },
+  {
+    "slug": "hummus-vegetable-wrap",
+    "name": "Hummus Vegetable Wrap",
+    "description": "A whole-grain wrap filled with hummus, crunchy vegetables, spinach, and feta.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/hummus-vegetable-wrap.jpg",
+    "servingSize": "1 wrap",
+    "calories": 360,
+    "protein": 15,
+    "carbohydrates": 52,
+    "fat": 12,
+    "fiber": 10,
+    "prepMinutes": 10,
+    "cookMinutes": 0,
+    "dietaryTags": ["Vegetarian", "High Fiber", "No Cook"],
+    "equipment": ["Cutting board", "Kitchen knife"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": null, "name": "large whole-grain tortilla", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1/4", "unit": "cup", "name": "hummus", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "cucumber", "preparationNote": "Cut into thin strips"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "bell pepper", "preparationNote": "Cut into thin strips"},
+      {"displayOrder": 5, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "2", "unit": "tbsp", "name": "feta cheese", "preparationNote": "Crumbled"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the vegetables", "instruction": "Rinse and dry the cucumber, pepper, and spinach. Cut the cucumber and pepper into thin strips that will fit easily inside the wrap.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 2, "title": "Spread the hummus", "instruction": "Lay the tortilla flat and spread hummus over it, leaving a 2 cm border around the edge.", "estimatedMinutes": 1, "safetyNote": null},
+      {"stepNumber": 3, "title": "Fill the wrap", "instruction": "Place spinach, cucumber, pepper, and feta in a line across the center. Avoid overfilling so the tortilla can close.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 4, "title": "Roll and slice", "instruction": "Fold the left and right sides inward, then roll tightly from the bottom. Place seam-side down and cut in half.", "estimatedMinutes": 2, "safetyNote": "Use a clean, stable board when slicing."}
+    ]
+  },
+  {
+    "slug": "roasted-chickpea-snack",
+    "name": "Roasted Chickpea Snack",
+    "description": "Crisp oven-roasted chickpeas seasoned with paprika, cumin, and garlic.",
+    "category": "SNACK",
+    "imagePath": "/images/meals/roasted-chickpea-snack.jpg",
+    "servingSize": "1 cup",
+    "calories": 260,
+    "protein": 13,
+    "carbohydrates": 38,
+    "fat": 7,
+    "fiber": 11,
+    "prepMinutes": 8,
+    "cookMinutes": 30,
+    "dietaryTags": ["Vegetarian", "High Fiber", "Plant Protein"],
+    "equipment": ["Colander", "Clean towel", "Baking sheet", "Oven"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "1", "unit": "can", "name": "chickpeas", "preparationNote": "15 oz, drained and rinsed"},
+      {"displayOrder": 2, "quantity": "2", "unit": "tsp", "name": "olive oil", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "tsp", "name": "smoked paprika", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1/4", "unit": "tsp", "name": "ground cumin", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/4", "unit": "tsp", "name": "garlic powder", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Heat the oven", "instruction": "Set the oven to 400 F / 200 C. Place an empty baking sheet nearby while the oven heats.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 2, "title": "Dry the chickpeas", "instruction": "Drain and rinse the chickpeas. Spread them on a clean towel and pat very dry; removing moisture helps them become crisp.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 3, "title": "Season and roast", "instruction": "Toss chickpeas with oil and spices, spread them in one layer, and roast for 25 to 30 minutes. Shake the tray carefully halfway through.", "estimatedMinutes": 30, "safetyNote": "Use oven mitts whenever moving the hot baking sheet."},
+      {"stepNumber": 4, "title": "Cool", "instruction": "Let the chickpeas cool on the tray for 10 minutes. They become crisper as they cool.", "estimatedMinutes": 10, "safetyNote": "Chickpeas are very hot inside immediately after roasting."}
+    ]
+  },
+  {
+    "slug": "salmon-rice-bowl",
+    "name": "Salmon and Rice Bowl",
+    "description": "Oven-baked salmon with brown rice, edamame, cucumber, and sesame.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/salmon-rice-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 670,
+    "protein": 46,
+    "carbohydrates": 68,
+    "fat": 24,
+    "fiber": 8,
+    "prepMinutes": 12,
+    "cookMinutes": 20,
+    "dietaryTags": ["High Protein", "Omega-3", "Balanced"],
+    "equipment": ["Baking sheet", "Parchment paper", "Saucepan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "salmon fillet", "preparationNote": "Skin removed if preferred"},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "shelled edamame", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "cucumber", "preparationNote": "Diced"},
+      {"displayOrder": 5, "quantity": "1", "unit": "tbsp", "name": "low-sodium soy sauce", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "sesame seeds", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Heat the oven", "instruction": "Preheat the oven to 400 F / 200 C and line a baking sheet with parchment paper.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 2, "title": "Season the salmon", "instruction": "Pat salmon dry and place it on the tray. Brush with half the soy sauce and season lightly with pepper.", "estimatedMinutes": 3, "safetyNote": "Wash hands and tools after touching raw fish."},
+      {"stepNumber": 3, "title": "Bake and warm", "instruction": "Bake salmon for 12 to 15 minutes. Meanwhile, warm the rice and edamame until steaming hot.", "estimatedMinutes": 15, "safetyNote": "Fish should reach 145 F / 63 C and flake easily with a fork."},
+      {"stepNumber": 4, "title": "Build the bowl", "instruction": "Add rice, edamame, and cucumber to a bowl. Place salmon on top, drizzle with remaining soy sauce, and add sesame seeds.", "estimatedMinutes": 3, "safetyNote": "Check carefully for small fish bones before eating."}
+    ]
+  },
+  {
+    "slug": "turkey-rice-bowl",
+    "name": "Turkey Rice Bowl",
+    "description": "Lean ground turkey with rice, green beans, carrots, and a ginger soy sauce.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/turkey-rice-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 620,
+    "protein": 49,
+    "carbohydrates": 72,
+    "fat": 16,
+    "fiber": 7,
+    "prepMinutes": 12,
+    "cookMinutes": 18,
+    "dietaryTags": ["High Protein", "Balanced", "Meal Prep"],
+    "equipment": ["Large frying pan", "Wooden spoon", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "170", "unit": "g", "name": "lean ground turkey", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1", "unit": "cup", "name": "green beans", "preparationNote": "Trimmed and halved"},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "carrot", "preparationNote": "Thinly sliced"},
+      {"displayOrder": 5, "quantity": "1", "unit": "tbsp", "name": "low-sodium soy sauce", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "fresh ginger", "preparationNote": "Grated"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the vegetables", "instruction": "Trim and halve the green beans and thinly slice the carrot. Mix soy sauce, ginger, and 2 tablespoons of water in a small cup.", "estimatedMinutes": 6, "safetyNote": null},
+      {"stepNumber": 2, "title": "Brown the turkey", "instruction": "Heat a large pan over medium-high heat. Add turkey and cook for 7 to 9 minutes, breaking it into small pieces with a wooden spoon.", "estimatedMinutes": 9, "safetyNote": "Ground turkey must reach 165 F / 74 C with no pink remaining."},
+      {"stepNumber": 3, "title": "Cook the vegetables", "instruction": "Add green beans and carrot. Pour in the sauce, cover, and cook over medium heat for 5 minutes until the vegetables are tender-crisp.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve", "instruction": "Place hot rice in a bowl and spoon the turkey and vegetables over it, including the sauce from the pan.", "estimatedMinutes": 2, "safetyNote": "Reheated rice should be steaming hot."}
+    ]
+  },
+  {
+    "slug": "chicken-tortillas",
+    "name": "Chicken Tortillas",
+    "description": "Whole-grain tortillas filled with seasoned chicken, peppers, lettuce, and yogurt sauce.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/chicken-tortillas.jpg",
+    "servingSize": "2 filled tortillas",
+    "calories": 590,
+    "protein": 47,
+    "carbohydrates": 58,
+    "fat": 18,
+    "fiber": 10,
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "dietaryTags": ["High Protein", "High Fiber", "Family Friendly"],
+    "equipment": ["Cutting board", "Large frying pan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "150", "unit": "g", "name": "boneless chicken breast", "preparationNote": "Cut into thin strips"},
+      {"displayOrder": 2, "quantity": "2", "unit": null, "name": "whole-grain tortillas", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1", "unit": "cup", "name": "bell peppers and onion", "preparationNote": "Thinly sliced"},
+      {"displayOrder": 4, "quantity": "1", "unit": "cup", "name": "shredded lettuce", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/4", "unit": "cup", "name": "plain Greek yogurt", "preparationNote": "Mixed with lime juice"},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "cumin and paprika", "preparationNote": "Combined"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare the fillings", "instruction": "Slice the pepper and onion. On a separate board, cut chicken into thin, even strips and season with cumin, paprika, salt, and pepper.", "estimatedMinutes": 8, "safetyNote": "Keep raw chicken and salad vegetables on separate boards or clean thoroughly between them."},
+      {"stepNumber": 2, "title": "Cook the chicken", "instruction": "Heat 1 teaspoon oil in a pan over medium-high heat. Cook chicken for 6 to 8 minutes, stirring often, then transfer it to a clean plate.", "estimatedMinutes": 8, "safetyNote": "Chicken must reach 165 F / 74 C internally."},
+      {"stepNumber": 3, "title": "Cook peppers and warm tortillas", "instruction": "Add pepper and onion to the same pan and cook for 4 minutes. Warm tortillas in a dry pan for about 20 seconds per side.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 4, "title": "Fill and fold", "instruction": "Divide lettuce, vegetables, chicken, and yogurt sauce between tortillas. Fold in the sides, roll from the bottom, and serve.", "estimatedMinutes": 3, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "lentil-rice-bowl",
+    "name": "Lentil Rice Bowl",
+    "description": "Comforting lentils and brown rice with tomato, spinach, and warming spices.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/lentil-rice-bowl.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 560,
+    "protein": 25,
+    "carbohydrates": 91,
+    "fat": 11,
+    "fiber": 18,
+    "prepMinutes": 10,
+    "cookMinutes": 25,
+    "dietaryTags": ["Vegetarian", "High Fiber", "Plant Protein"],
+    "equipment": ["Medium saucepan", "Wooden spoon"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "3/4", "unit": "cup", "name": "cooked brown lentils", "preparationNote": "Drained and rinsed if canned"},
+      {"displayOrder": 2, "quantity": "3/4", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "diced tomatoes", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "cup", "name": "low-sodium vegetable broth", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tsp", "name": "cumin and turmeric", "preparationNote": "Combined"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Start the sauce", "instruction": "Place a saucepan over medium heat. Add 1 teaspoon oil and the spices, then stir for 30 seconds until fragrant.", "estimatedMinutes": 2, "safetyNote": "Do not lean directly over the pan when spices heat."},
+      {"stepNumber": 2, "title": "Simmer the lentils", "instruction": "Add tomatoes, broth, and lentils. Bring to a gentle simmer, lower the heat, and cook uncovered for 10 minutes, stirring occasionally.", "estimatedMinutes": 12, "safetyNote": null},
+      {"stepNumber": 3, "title": "Add spinach", "instruction": "Stir in spinach and cook for 2 minutes until wilted. If the mixture becomes too thick, add 1 tablespoon of water.", "estimatedMinutes": 2, "safetyNote": null},
+      {"stepNumber": 4, "title": "Serve over rice", "instruction": "Warm the brown rice until steaming, place it in a bowl, and spoon the lentil mixture over the top.", "estimatedMinutes": 3, "safetyNote": "Reheated rice and lentils should be steaming hot throughout."}
+    ]
+  },
+  {
+    "slug": "healthy-tuna-pasta",
+    "name": "Healthy Tuna Pasta",
+    "description": "Whole-wheat pasta with tuna, tomatoes, spinach, peas, and lemon.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/healthy-tuna-pasta.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 610,
+    "protein": 43,
+    "carbohydrates": 72,
+    "fat": 17,
+    "fiber": 10,
+    "prepMinutes": 10,
+    "cookMinutes": 18,
+    "dietaryTags": ["High Protein", "High Fiber", "Whole Grain"],
+    "equipment": ["Large saucepan", "Colander", "Large frying pan"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "85", "unit": "g", "name": "dry whole-wheat pasta", "preparationNote": null},
+      {"displayOrder": 2, "quantity": "1", "unit": "can", "name": "tuna in water", "preparationNote": "5 oz, drained"},
+      {"displayOrder": 3, "quantity": "1", "unit": "cup", "name": "cherry tomatoes", "preparationNote": "Halved"},
+      {"displayOrder": 4, "quantity": "1", "unit": "cup", "name": "baby spinach", "preparationNote": null},
+      {"displayOrder": 5, "quantity": "1/2", "unit": "cup", "name": "green peas", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tbsp", "name": "olive oil and lemon juice", "preparationNote": "Combined"}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Cook the pasta", "instruction": "Bring a large saucepan of water to a boil. Add pasta and cook according to the package until tender but still slightly firm. Save 1/4 cup cooking water, then drain.", "estimatedMinutes": 12, "safetyNote": "Drain boiling water carefully and keep steam away from your face."},
+      {"stepNumber": 2, "title": "Cook the vegetables", "instruction": "Heat olive oil in a large pan over medium heat. Add tomatoes and peas and cook for 4 minutes until the tomatoes begin to soften.", "estimatedMinutes": 4, "safetyNote": null},
+      {"stepNumber": 3, "title": "Combine", "instruction": "Add pasta, spinach, drained tuna, lemon juice, and 2 tablespoons of reserved pasta water. Stir gently for 2 minutes until spinach wilts and tuna is hot.", "estimatedMinutes": 3, "safetyNote": "Check tuna carefully for any small bones."},
+      {"stepNumber": 4, "title": "Season and serve", "instruction": "Taste and add black pepper. Add another spoonful of pasta water if the pasta looks dry, then serve hot.", "estimatedMinutes": 1, "safetyNote": null}
+    ]
+  },
+  {
+    "slug": "chicken-vegetable-stir-fry",
+    "name": "Chicken and Vegetable Stir Fry",
+    "description": "Quick chicken stir fry with broccoli, snap peas, peppers, and brown rice.",
+    "category": "DINNER",
+    "imagePath": "/images/meals/chicken-vegetable-stir-fry.jpg",
+    "servingSize": "1 large bowl",
+    "calories": 540,
+    "protein": 48,
+    "carbohydrates": 50,
+    "fat": 18,
+    "fiber": 11,
+    "prepMinutes": 15,
+    "cookMinutes": 15,
+    "dietaryTags": ["High Protein", "High Fiber", "Quick"],
+    "equipment": ["Cutting board", "Large wok or frying pan", "Food thermometer"],
+    "ingredients": [
+      {"displayOrder": 1, "quantity": "160", "unit": "g", "name": "boneless chicken breast", "preparationNote": "Cut into thin strips"},
+      {"displayOrder": 2, "quantity": "1", "unit": "cup", "name": "broccoli florets", "preparationNote": null},
+      {"displayOrder": 3, "quantity": "1/2", "unit": "cup", "name": "snap peas", "preparationNote": null},
+      {"displayOrder": 4, "quantity": "1/2", "unit": "cup", "name": "red bell pepper", "preparationNote": "Sliced"},
+      {"displayOrder": 5, "quantity": "2/3", "unit": "cup", "name": "cooked brown rice", "preparationNote": null},
+      {"displayOrder": 6, "quantity": "1", "unit": "tbsp", "name": "low-sodium stir-fry sauce", "preparationNote": null}
+    ],
+    "instructions": [
+      {"stepNumber": 1, "title": "Prepare everything first", "instruction": "Cut all vegetables before cooking. On a separate board, slice chicken into thin, even strips and pat them dry.", "estimatedMinutes": 10, "safetyNote": "Clean the knife, board, and hands after handling raw chicken."},
+      {"stepNumber": 2, "title": "Cook the chicken", "instruction": "Heat 1 teaspoon oil in a large pan over medium-high heat. Add chicken in one layer and cook for 5 to 7 minutes, stirring occasionally, then move it to a clean plate.", "estimatedMinutes": 7, "safetyNote": "Chicken must reach 165 F / 74 C internally."},
+      {"stepNumber": 3, "title": "Stir-fry the vegetables", "instruction": "Add broccoli, snap peas, pepper, and 2 tablespoons of water to the hot pan. Stir frequently for 4 to 5 minutes until bright and tender-crisp.", "estimatedMinutes": 5, "safetyNote": null},
+      {"stepNumber": 4, "title": "Combine and serve", "instruction": "Return chicken to the pan, add sauce, and stir for 1 to 2 minutes until everything is hot and coated. Serve over brown rice.", "estimatedMinutes": 2, "safetyNote": null}
+    ]
+  }
+]

@@ -57,6 +57,7 @@ button {
 
 .brand-button,
 .nav-links button,
+.nav-links a,
 .auth-actions button {
   background: transparent;
   color: var(--green-950);
@@ -71,6 +72,7 @@ button {
   padding: 0;
   font-weight: 900;
   font-size: 19px;
+  text-decoration: none;
 }
 
 .logo {
@@ -109,14 +111,31 @@ button {
   align-items: center;
 }
 
-.nav-links button {
+.nav-links {
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-links button,
+.nav-links a {
   padding: 10px 12px;
   border-radius: 999px;
   color: #52645b;
   font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
 }
 
-.nav-links button:hover {
+.nav-links button:hover,
+.nav-links a:hover,
+.nav-links a.active {
   transform: translateY(-1px);
   background: rgba(34, 163, 90, 0.12);
   color: var(--green-800);
@@ -158,8 +177,7 @@ button {
   padding: 34px 18px;
   background:
     linear-gradient(rgba(5, 25, 14, 0.38), rgba(5, 25, 14, 0.5)),
-    url("https://images.unsplash.com/photo-1543352634-a1c51d9f1fa7?auto=format&fit=crop&w=1800&q=80"),
-    url("/images/fitmeal-login-bg.png"),
+    url("/images/fitmeal-food-bg.jpg"),
     radial-gradient(circle at top left, rgba(79, 220, 121, 0.28), transparent 34%);
   background-position: center;
   background-size: cover;
@@ -441,7 +459,7 @@ button {
   padding: 72px 7vw 70px;
   background:
     linear-gradient(120deg, rgba(4, 35, 18, 0.86), rgba(19, 98, 53, 0.58)),
-    url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1800&q=80");
+    url("/images/fitmeal-food-bg.jpg");
   background-position: center;
   background-size: cover;
   color: white;
@@ -513,7 +531,7 @@ button {
   border-radius: 28px;
   background:
     linear-gradient(rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.9)),
-    url("https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=900&q=80");
+    url("/images/meals/chicken-rice-bowl.jpg");
   background-position: center;
   background-size: cover;
   color: var(--ink);
@@ -573,6 +591,19 @@ button {
   max-width: 1220px;
   margin: 0 auto;
   padding: 36px 22px 64px;
+}
+
+.route-page {
+  min-height: calc(100vh - 72px);
+}
+
+.route-page > .profile-section,
+.route-page > .ai-section,
+.route-page > .ai-weekly-section,
+.route-page > .ai-coach-section,
+.route-page > .food-analyzer-section,
+.route-page > .grocery-panel {
+  margin-top: 0;
 }
 
 .dashboard {
@@ -971,6 +1002,11 @@ button {
   grid-template-columns: minmax(280px, 0.9fr) minmax(0, 1.1fr);
   gap: 22px;
   margin-top: 24px;
+}
+
+.single-column-grid {
+  grid-template-columns: 1fr;
+  margin-top: 0;
 }
 
 .panel {
@@ -1630,6 +1666,11 @@ button {
   .auth-actions,
   .hero-actions {
     flex-wrap: wrap;
+  }
+
+  .nav-links {
+    justify-content: flex-start;
+    overflow-x: visible;
   }
 
   .auth-page {
