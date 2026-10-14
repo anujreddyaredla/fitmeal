@@ -1,303 +1,340 @@
-# FitMeal
+# FitMeal AI
 
-FitMeal is a full-stack nutrition and meal-planning application. It combines a React dashboard with a Spring Boot API, PostgreSQL persistence, JWT authentication, user-scoped data, progress analytics, and optional Groq-backed AI features.
+FitMeal AI is a full-stack nutrition and meal-planning application built with React and Spring Boot. It combines personal meal tracking, a searchable healthy-recipe catalog, weekly planning, grocery management, nutrition goals, progress analytics, and optional Groq-powered AI tools in a JWT-protected, multi-user application.
 
-## Features
+> **Deployment status:** local development only. This repository does not currently include a hosted environment or production deployment configuration.
 
-- Secure user registration and login
-- JWT authentication with BCrypt password hashing
-- Registration, login, email-verification, and forgot/reset-password API flows
-- Multi-user isolated meals, grocery items, meal plans, weight entries, and profile data
-- Meal CRUD with search and meal-type filtering
-- Editable grocery list with purchased tracking
-- Editable weekly meal planner
-- AI weekly planner generation and save-to-planner workflow
-- AI meal recommendations powered by Groq with safe fallback responses
-- AI Nutrition Coach chat with local conversation persistence
-- AI Food Image Analyzer with nutrition estimates and save-as-meal workflow
-- Profile and nutrition goals with BMI, calorie, protein, and water calculations
-- Progress Analytics dashboard with Recharts weight and nutrition trends
-- Responsive FitMeal green/white UI
+## Verified Features
+
+### Meals and recipes
+
+- Create, view, edit, delete, search, and filter personal meals.
+- Browse a seeded catalog of 24 healthy meals across Breakfast, Lunch, Snack, and Dinner.
+- Search catalog meals by name and filter them by category.
+- Open recipe pages with local meal photography, nutrition estimates, ingredients, equipment, preparation time, and beginner-friendly cooking steps.
+- Add a catalog recipe directly to a selected day and meal slot in the weekly planner.
+- Create custom planner entries when a suitable catalog meal is not available.
+
+### Planning and tracking
+
+- Manage a Monday-to-Sunday meal plan with breakfast, lunch, dinner, and snack slots.
+- Maintain a categorized grocery list with add, edit, delete, and purchased-toggle actions.
+- Save profile measurements and fitness goals.
+- Calculate estimated calorie, protein, water, and BMI targets in the frontend.
+- Track weight entries and view weight and seven-day nutrition trends with Recharts.
+- View dashboard summaries for calories, protein, meals, hydration goals, planned meals, and goal completion.
+
+### AI tools
+
+- Generate meal recommendations from a fitness goal, calorie target, and protein target.
+- Format recommendations into a seven-day AI planner and save the generated days to the planner.
+- Chat with an AI nutrition coach using profile context and recent conversation history.
+- Upload JPG, JPEG, or PNG food images for estimated calories, protein, carbohydrates, fat, serving size, confidence, tips, and alternatives.
+- Save an analyzed food result as a personal meal.
+- Continue using built-in fallback responses when Groq is not configured or a supported AI request fails.
+
+### Authentication and data isolation
+
+- Register and log in with BCrypt-hashed passwords.
+- Authenticate protected API calls with a signed, 24-hour JWT Bearer token.
+- Restore the frontend session from browser local storage and log out automatically after unauthorized protected requests.
+- Keep meals, grocery items, meal plans, profiles, and weight entries scoped to the authenticated user.
+- Provide email-verification and forgot/reset-password API foundations. Local registration currently auto-verifies users; outbound email delivery is not implemented.
 
 ## Architecture
 
 ```text
-React + Vite Frontend
+React 19 + Vite 8
         |
-        | REST API + JWT Bearer token
+        | REST/JSON + JWT Bearer token
         v
-Spring Boot Backend
+Spring Boot 4 / Spring Security
         |
         | Spring Data JPA / Hibernate
         v
 PostgreSQL
 
-Spring Boot Backend
-        |
-        | Groq API with fallback behavior
-        v
-AI recommendations, coach chat, and food image analysis
+Spring Boot AI services ---> Groq Chat Completions API
+                         `-> local fallback responses
 ```
+
+The frontend uses React Router for authenticated client-side pages. The backend uses controllers, services, repositories, and JPA entities under the `com.fitmeal.backend` namespace. Spring Security derives the current user from the JWT rather than trusting ownership information from request bodies.
 
 ## Tech Stack
 
 ### Frontend
 
-- React
-- Vite
-- JavaScript
-- HTML/CSS
-- Recharts
-- LocalStorage for JWT/user session restoration
+- React 19
+- React Router 7
+- Vite 8
+- JavaScript, HTML, and CSS
+- Recharts 3
+- Browser `localStorage` for session restoration and AI Coach conversation persistence
 
 ### Backend
 
 - Java 21
-- Spring Boot
+- Spring Boot 4.0.6
 - Spring Web MVC
 - Spring Security
-- Spring Data JPA
-- Hibernate
-- PostgreSQL
-- BCrypt
-- JWT
+- Spring Data JPA and Hibernate
+- Jakarta Bean Validation
+- PostgreSQL in local development
+- H2 for automated tests
+- BCrypt password hashing
+- HMAC-SHA256 JWT signing
 - Maven Wrapper
 
-### AI
+### AI integration
 
 - Groq Chat Completions API
-- Text model: `llama-3.1-8b-instant`
-- Vision model default: `meta-llama/llama-4-scout-17b-16e-instruct`
-- Safe fallback responses when Groq is unavailable or not configured
+- Configurable text and vision model names
+- JSON response parsing with safe fallback behavior
 
 ## Project Structure
 
 ```text
 fitmeal/
-|-- backend/               Spring Boot API, persistence, security, and tests
-|-- frontend/              React + Vite application
+|-- backend/
+|   |-- src/main/java/com/fitmeal/backend/
+|   |   |-- config/         Spring Security and JWT filter
+|   |   |-- controller/     REST controllers and error handling
+|   |   |-- dto/            Catalog response/request DTOs
+|   |   |-- model/          JPA entities and API request/response models
+|   |   |-- repository/     Spring Data JPA repositories
+|   |   `-- service/        Business, authentication, catalog, and AI services
+|   |-- src/main/resources/
+|   |   |-- catalog/        Seeded meal-catalog JSON
+|   |   `-- application.properties
+|   |-- src/test/           Integration, security, catalog, and isolation tests
+|   |-- .env.example
+|   `-- pom.xml
+|-- frontend/
+|   |-- public/images/      FitMeal branding and 24 local recipe images
+|   |-- src/
+|   |   |-- api/            Focused API helpers
+|   |   |-- components/     Shared UI and analytics components
+|   |   |-- hooks/          Catalog data hooks
+|   |   `-- pages/          Routed application pages
+|   |-- .env.example
+|   `-- package.json
 |-- .gitignore
 `-- README.md
 ```
 
-## Backend API Summary
+## Frontend Pages
 
-Base URL for local development:
+Authenticated users can access these routes:
 
-```text
-http://localhost:8080
-```
+| Route | Purpose |
+|---|---|
+| `/dashboard` | Daily summaries, goals, weight entries, and nutrition charts |
+| `/profile` | Profile measurements and nutrition goals |
+| `/meal-library` | Searchable and categorized recipe catalog |
+| `/meal-library/:slug` | Recipe nutrition, ingredients, equipment, steps, and planner action |
+| `/meals` | Personal meal CRUD and filtering |
+| `/planner` | Catalog-based and custom weekly meal planning |
+| `/ai-picks` | AI meal recommendations |
+| `/ai-planner` | AI-generated seven-day meal plan |
+| `/ai-coach` | Conversational nutrition coach |
+| `/food-analyzer` | Food-image nutrition analysis and save-as-meal workflow |
+| `/grocery` | Grocery CRUD, categories, purchase status, and progress |
 
-### Public Auth APIs
+When no valid local user/token session exists, the application renders its login, registration, verification, forgot-password, and reset-password screens instead of the authenticated navigation.
 
-| Method | Endpoint | Purpose |
-|---|---|---|
-| POST | `/api/auth/register` | Register user |
-| POST | `/api/auth/login` | Login and receive JWT |
-| GET | `/api/auth/verify-email?token=TOKEN` | Email verification foundation |
-| POST | `/api/auth/forgot-password` | Request reset token |
-| POST | `/api/auth/reset-password` | Reset password |
-| GET | `/api/hello` | Public health/test endpoint |
+## API Overview
 
-### Protected APIs
+Local backend base URL: `http://localhost:8080`
 
-All protected endpoints require:
+Protected endpoints require:
 
-```text
+```http
 Authorization: Bearer <JWT_TOKEN>
 ```
 
-| Resource | Endpoints |
-|---|---|
-| Meals | `GET/POST /api/meals`, `GET/PUT/DELETE /api/meals/{id}`, `GET /api/meals/type/{mealType}` |
-| Grocery | `GET/POST /api/grocery-list`, `PUT/DELETE /api/grocery-list/{id}`, `PATCH /api/grocery-list/{id}/toggle` |
-| Meal Plans | `GET/POST /api/meal-plans`, `PUT/DELETE /api/meal-plans/{id}` |
-| Profile | `GET/POST /api/profile/me` |
-| Weight Entries | `GET/POST /api/weight-entries`, `PUT/DELETE /api/weight-entries/{id}` |
-| AI Recommendations | `POST /api/ai/recommendations` |
-| AI Coach | `POST /api/ai/coach` |
-| Food Analyzer | `POST /api/ai/analyze-food` |
+### Public endpoints
 
-## Security
+| Method | Endpoint | Purpose |
+|---|---|---|
+| `POST` | `/api/auth/register` | Register a user |
+| `POST` | `/api/auth/login` | Authenticate and receive a JWT |
+| `GET` | `/api/auth/verify-email?token={token}` | Verify an email token |
+| `POST` | `/api/auth/forgot-password` | Create reset instructions when an account exists |
+| `POST` | `/api/auth/reset-password` | Replace a password using a valid, unexpired reset token |
+| `GET` | `/api/hello` | Basic public application response |
 
-- Passwords are hashed with BCrypt.
-- JWT tokens protect application APIs.
-- Frontend stores the active token as `fitMealToken` and user info as `fitMealUser`.
-- Backend determines ownership from Spring Security authentication, not from frontend request bodies.
-- Meals, grocery items, meal plans, weight entries, and profile data are user-scoped.
-- Users cannot read, update, or delete another user's scoped records through the service layer.
-- Global error handling returns clean JSON messages instead of stack traces.
-- No real secrets should be committed. Use environment variables for credentials and API keys.
+### Protected endpoints
 
-## Multi-User Isolation
+| Area | Method | Endpoint | Purpose |
+|---|---|---|---|
+| Meal catalog | `GET` | `/api/catalog/meals` | List catalog meals; supports `category`, `search`, `page`, `size`, and `sort` |
+| Meal catalog | `GET` | `/api/catalog/meals/{slug}` | Get full recipe details |
+| Personal meals | `GET`, `POST` | `/api/meals` | List or create the current user's meals |
+| Personal meals | `GET`, `PUT`, `DELETE` | `/api/meals/{id}` | Read, update, or delete an owned meal |
+| Personal meals | `GET` | `/api/meals/type/{mealType}` | Filter owned meals by type, ignoring case |
+| Meal plans | `GET`, `POST` | `/api/meal-plans` | List or create weekly plan records |
+| Meal plans | `POST` | `/api/meal-plans/catalog` | Add a catalog meal to a day and meal slot |
+| Meal plans | `PUT`, `DELETE` | `/api/meal-plans/{id}` | Update or delete an owned plan |
+| Grocery list | `GET`, `POST` | `/api/grocery-list` | List or create grocery items |
+| Grocery list | `PUT`, `DELETE` | `/api/grocery-list/{id}` | Update or delete an owned grocery item |
+| Grocery list | `PATCH` | `/api/grocery-list/{id}/toggle` | Toggle purchased status |
+| Profile | `GET`, `POST` | `/api/profile/me` | Read or save the authenticated user's profile |
+| Weight tracking | `GET`, `POST` | `/api/weight-entries` | List or create weight entries |
+| Weight tracking | `PUT`, `DELETE` | `/api/weight-entries/{id}` | Update or delete an owned weight entry |
+| AI recommendations | `POST` | `/api/ai/recommendations` | Generate goal-based meal recommendations |
+| AI Coach | `POST` | `/api/ai/coach` | Send a profile-aware nutrition conversation request |
+| Food analysis | `POST` | `/api/ai/analyze-food` | Analyze multipart form field `image` |
 
-FitMeal uses authenticated user ownership for user-created data.
+## Prerequisites
 
-- `Meal`, `GroceryItem`, and `MealPlan` use an `AppUser` owner relationship.
-- `WeightEntry` is scoped by authenticated user email.
-- Controllers read the authenticated principal from Spring Security.
-- Frontend requests do not send `userId`, owner email, or ownership fields.
-- Existing global rows with no owner are hidden from authenticated users until migrated.
+- Java 21
+- Node.js 20 or newer and npm
+- PostgreSQL running on the configured host and port
+- A PostgreSQL role that can access the application database
+- Optional: a Groq API key for live AI responses
 
-Optional local migration for old rows:
+No separate Maven installation is required because the Maven Wrapper is included.
 
-```sql
-UPDATE meals SET owner_id = (SELECT id FROM users WHERE email = 'your@email.com') WHERE owner_id IS NULL;
-UPDATE grocery_items SET owner_id = (SELECT id FROM users WHERE email = 'your@email.com') WHERE owner_id IS NULL;
-UPDATE meal_plans SET owner_id = (SELECT id FROM users WHERE email = 'your@email.com') WHERE owner_id IS NULL;
+## Environment Configuration
+
+Real `.env` files are ignored by Git. Copy the committed examples and replace placeholders locally. Never commit passwords, JWT secrets, tokens, or API keys.
+
+### Backend variables
+
+| Variable | Required | Safe example or placeholder |
+|---|---|---|
+| `DB_URL` | Yes for the intended database | `jdbc:postgresql://localhost:5432/mealmate_db` |
+| `DB_USERNAME` | Yes | `postgres` |
+| `DB_PASSWORD` | Yes for PostgreSQL | `<your-local-database-password>` |
+| `JWT_SECRET` | Yes; minimum 32 characters | `<generate-a-long-random-secret>` |
+| `GROQ_API_KEY` | Only for live Groq calls | `<optional-groq-api-key>` |
+| `GROQ_MODEL` | Optional | `<supported-groq-text-model>` |
+| `GROQ_VISION_MODEL` | Optional | `<supported-groq-vision-model>` |
+| `CATALOG_SEED_ENABLED` | Optional | `true` |
+
+The backend reads `backend/.env` when it starts from the `backend` directory. Operating-system environment variables and Java system properties take precedence over values in that file.
+
+### Frontend variables
+
+| Variable | Required | Safe local value |
+|---|---|---|
+| `VITE_API_BASE_URL` | Optional | `http://localhost:8080` |
+
+The frontend already defaults to `http://localhost:8080` when `VITE_API_BASE_URL` is absent.
+
+## Local Setup
+
+The following commands use PowerShell from the repository root.
+
+### 1. Create the PostgreSQL database
+
+The checked-in configuration expects the existing local database name `mealmate_db`:
+
+```powershell
+psql -U postgres -c "CREATE DATABASE mealmate_db;"
 ```
 
-## AI Features
+If the database already exists, skip this command. A different database is supported by changing `DB_URL` in your private backend environment file.
 
-- AI Meal Recommendations generate meals from goal, calories, and protein target.
-- AI Weekly Planner formats AI recommendations into a seven-day plan and saves it to the user's planner.
-- AI Coach answers nutrition questions using profile context and recent chat history.
-- Food Image Analyzer accepts JPG/JPEG/PNG uploads and estimates nutrition from food images.
-- Groq failures or missing API keys return safe fallback responses so the app keeps working.
-
-## Environment Variables
-
-Do not commit real `.env` files. Commit only `.env.example`.
-
-### Backend `.env.example`
-
-```env
-DB_URL=jdbc:postgresql://localhost:5432/mealmate_db
-DB_USERNAME=postgres
-DB_PASSWORD=change_me
-JWT_SECRET=replace_with_a_long_random_secret_at_least_32_characters
-GROQ_API_KEY=
-GROQ_MODEL=llama-3.1-8b-instant
-GROQ_VISION_MODEL=meta-llama/llama-4-scout-17b-16e-instruct
-```
-
-Create a private local configuration from the template:
+### 2. Configure and run the backend
 
 ```powershell
 cd backend
 Copy-Item .env.example .env
 ```
 
-Replace `DB_PASSWORD` and `JWT_SECRET` in `backend/.env`. Add `GROQ_API_KEY` only when testing the AI-backed responses. The backend reads this local file during startup; `.env` is ignored by Git.
-
-### Frontend `.env.example`
-
-```env
-VITE_API_BASE_URL=http://localhost:8080
-```
-
-To override the frontend API URL, copy the template to `frontend/.env` and edit the value. The frontend defaults to `http://localhost:8080` when the variable is not set.
-
-## Local Setup
-
-### Prerequisites
-
-- Java 21
-- Node.js 20+ and npm
-- PostgreSQL
-- Maven Wrapper included with backend
-
-### Database
-
-Create the local database:
-
-```sql
-CREATE DATABASE mealmate_db;
-```
-
-Configure `backend/.env` from the template as described above. PostgreSQL must be reachable using the configured URL, username, and password.
-
-### Run Backend
+Open `backend/.env`, replace the database-password and JWT-secret placeholders, and optionally provide Groq configuration. Then start Spring Boot:
 
 ```powershell
-cd backend
 .\mvnw.cmd spring-boot:run
 ```
 
-### Run Frontend
+The backend starts at `http://localhost:8080`. Hibernate uses `ddl-auto=update`, and the catalog seeder loads the 24 catalog recipes when `CATALOG_SEED_ENABLED` is enabled.
+
+### 3. Configure and run the frontend
+
+In a second PowerShell terminal from the repository root:
 
 ```powershell
 cd frontend
-npm install
+Copy-Item .env.example .env
+npm ci
 npm run dev
 ```
 
-Frontend URL:
+Open `http://localhost:5173`. The backend CORS configuration permits local Vite origins on ports `5173` and `5174`.
 
-```text
-http://localhost:5173
-```
+## Tests and Builds
 
-Backend URL:
-
-```text
-http://localhost:8080
-```
-
-## Verification Commands
-
-Backend:
+### Backend
 
 ```powershell
 cd backend
 .\mvnw.cmd test
-.\mvnw.cmd -DskipTests package
+.\mvnw.cmd package
 ```
 
-Frontend:
+The test source currently covers application startup, catalog listing/detail behavior, catalog seeding, catalog-to-planner integration, protected-route/profile behavior, and user-data isolation.
+
+### Frontend
 
 ```powershell
 cd frontend
 npm run lint
 npm run build
+npm run preview
 ```
+
+The production frontend output is written to `frontend/dist/` and is ignored by Git.
+
+## Security Notes
+
+- Passwords are persisted as BCrypt hashes and are not returned in authentication responses.
+- JWTs are signed with `HmacSHA256`, expire after 24 hours, and require a configured secret of at least 32 characters.
+- Spring Security is stateless and disables form login and HTTP Basic authentication.
+- All application APIs except the documented authentication and hello endpoints require authentication.
+- Ownership is resolved from the authenticated principal. Clients do not submit a trusted owner ID or email.
+- CORS is currently limited to the two local Vite origins and must be configured separately for deployment.
+- The frontend currently stores its JWT in `localStorage`; refresh tokens are not implemented.
+
+## AI Behavior and Limitations
+
+- AI recommendations and AI Coach use the configured Groq text model.
+- Food analysis sends supported images to the configured Groq vision model as a data URL.
+- AI responses are parsed into application response models; failures return local fallback content instead of crashing the endpoint.
+- Nutrition estimates and AI guidance are informational and are not medical advice.
+- Without `GROQ_API_KEY`, the application remains usable but returns fallback AI responses.
+- Password-reset tokens are stored with a 15-minute expiry, but reset email delivery is not implemented. A real provider such as SendGrid, Resend, or SMTP is still required for a normal end-user reset flow.
+- New registrations are automatically marked email-verified for local development. Production should require delivered verification links.
 
 ## Screenshots
 
-No application screenshots are currently checked into the repository. Useful screens to capture later are:
+No screenshots of the running application are currently committed. The recipe and branding files under `frontend/public/images/` are application assets, not UI screenshots.
 
-- Login and registration
-- Dashboard analytics
-- Meal, grocery-list, and weekly-planner workflows
-- Profile and nutrition goals
-- AI recommendations and AI Coach
-- Food Analyzer
-- Progress analytics
+Recommended future captures, with planned relative locations:
 
-Store future captures under `docs/screenshots/` and reference only screenshots taken from the working application.
+| Screen | Planned path |
+|---|---|
+| Dashboard and progress analytics | `docs/screenshots/dashboard.png` |
+| Meal Library | `docs/screenshots/meal-library.png` |
+| Recipe details | `docs/screenshots/recipe-details.png` |
+| Weekly planner | `docs/screenshots/planner.png` |
+| Grocery list | `docs/screenshots/grocery.png` |
+| AI Coach or Food Analyzer | `docs/screenshots/ai-tools.png` |
+
+These are placeholders only; they should be linked or embedded after captures from the working application are added.
 
 ## Deployment Status
 
-This repository does not currently include production deployment manifests or a hosted environment. A deployment would need separate frontend and backend hosting, managed PostgreSQL, production environment variables, production CORS configuration, and HTTPS.
-
-## Development Notes
-
-- New users are automatically marked verified for local development. The verification endpoint remains available, but real email delivery is not configured.
-- Forgot/reset-password endpoints exist, but reset email delivery still requires an email provider.
-- Hibernate currently uses `ddl-auto=update`; versioned database migrations are not configured.
-- Backend CORS permits the local Vite origins `http://localhost:5173` and `http://localhost:5174`.
-- The browser stores the JWT in `localStorage`; refresh tokens are not implemented.
-- Groq is optional. Recommendation services use fallback behavior when the API key or model response is unavailable.
-
-## GitHub Safety Checklist
-
-- `.env` files are ignored.
-- `target/`, `node_modules/`, and `dist/` are ignored.
-- Real `GROQ_API_KEY`, `DB_PASSWORD`, and `JWT_SECRET` values should not be committed.
-- `.env.example` files are committed as templates only.
-- README is safe to publish and contains no real credentials.
+FitMeal currently runs in local development only. No production host, container definition, reverse proxy, CI/CD pipeline, or managed database deployment is included. A production release would require environment-specific CORS, HTTPS, managed secrets, database migrations, persistent PostgreSQL hosting, frontend/backend hosting, and an email-delivery provider.
 
 ## Future Improvements
 
-- Add refresh tokens
-- Add real email delivery with SendGrid, Resend, or SMTP
-- Add OpenAPI/Swagger documentation
-- Add Flyway/Liquibase migrations
-- Add Docker Compose for local full-stack startup
-- Add role-based admin screens
-- Add more controller-level integration tests
-- Add deployment-specific CORS profiles
-
-## Resume-Friendly Summary
-
-FitMeal AI is a full-stack health-tech application built with React, Vite, Spring Boot, PostgreSQL, Spring Security, JWT, BCrypt, Recharts, and Groq AI. It supports secure multi-user meal tracking, grocery management, weekly planning, profile goals, progress analytics, AI meal recommendations, AI nutrition coaching, and AI food image analysis. The project demonstrates REST API design, authentication, database modeling, user-owned data isolation, AI integration, responsive UI engineering, and production-readiness practices.
+- Add real verification and password-reset email delivery.
+- Replace browser-stored long-lived authentication with access/refresh token rotation and hardened cookie handling.
+- Introduce Flyway or Liquibase migrations instead of relying on `ddl-auto=update`.
+- Add OpenAPI/Swagger documentation.
+- Add frontend component and end-to-end tests.
+- Add Docker Compose for reproducible local startup.
+- Add deployment profiles, production CORS configuration, and CI checks.
+- Capture and publish screenshots from the working application.
